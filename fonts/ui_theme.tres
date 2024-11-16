@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bkerc6l33jv1x"]
+
+[ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://fonts/FredokaOne-Regular.ttf" id="1_lysoh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_414q4"]
+bg_color = Color(0.743307, 0.526064, 0.299291, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.438229, 0.294561, 0.142451, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.211765)
+shadow_size = 10
+
+[resource]
+default_font = ExtResource("1_lysoh")
+Panel/styles/panel = SubResource("StyleBoxFlat_414q4")

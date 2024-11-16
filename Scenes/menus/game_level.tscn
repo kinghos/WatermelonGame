@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsnydv4c3yn7"]
+
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_knqhl"]
+[ext_resource type="PackedScene" uid="uid://bojrg6o8ov2if" path="res://scenes/menus/game_ui.tscn" id="2_k8box"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_knqhl")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="UI" instance=ExtResource("2_k8box")]
+offset_left = 6.0
+offset_right = 6.0
+mouse_filter = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(580, 1889)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-424, -467)
+polygon = PackedVector2Array(0, -800, 0, 900, 800, 900, 800, -800, 750, -800, 750, 850, 50, 850, 50, -800)
