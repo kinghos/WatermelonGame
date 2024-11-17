@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bojrg6o8ov2if"]
 
-[ext_resource type="Theme" uid="uid://bkerc6l33jv1x" path="res://fonts/ui_theme.tres" id="1_dcxng"]
+[ext_resource type="Theme" uid="uid://bkerc6l33jv1x" path="res://resources/fonts/ui_theme.tres" id="1_dcxng"]
 [ext_resource type="Texture2D" uid="uid://ctut3nhms5c8e" path="res://icon.svg" id="2_1u3kg"]
-[ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://fonts/FredokaOne-Regular.ttf" id="2_fruyp"]
+[ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://resources/fonts/FredokaOne-Regular.ttf" id="2_fruyp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52ryf"]
 
@@ -129,7 +129,9 @@ horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Background/InfoPanel/Info/BottomBox/VBoxContainer/NextFruitBox"]
 layout_mode = 2
+size_flags_horizontal = 4
 texture = ExtResource("2_1u3kg")
+stretch_mode = 3
 
 [node name="HeldFruitBox" type="VBoxContainer" parent="Background/InfoPanel/Info/BottomBox/VBoxContainer"]
 layout_mode = 2
@@ -142,7 +144,9 @@ horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Background/InfoPanel/Info/BottomBox/VBoxContainer/HeldFruitBox"]
 layout_mode = 2
+size_flags_horizontal = 4
 texture = ExtResource("2_1u3kg")
+stretch_mode = 3
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Background"]
 layout_mode = 0

@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsnydv4c3yn7"]
+
+[ext_resource type="Script" path="res://scenes/modes/game_level.gd" id="1_l035o"]
+[ext_resource type="PackedScene" uid="uid://bojrg6o8ov2if" path="res://scenes/menus/game_ui.tscn" id="2_478an"]
+[ext_resource type="Texture2D" uid="uid://bg4husm17fda0" path="res://assets/board.png" id="3_7obd2"]
+[ext_resource type="Texture2D" uid="uid://di5gq3fdk2ajc" path="res://assets/cloud.png" id="4_w5q8k"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_l035o")
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="GameUI" parent="UI" instance=ExtResource("2_478an")]
+offset_left = 6.0
+offset_right = 6.0
+mouse_filter = 1
+
+[node name="Board" type="StaticBody2D" parent="."]
+position = Vector2(-44, 370)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Board"]
+position = Vector2(589, 1267)
+polygon = PackedVector2Array(-538, -585, -538, 559, 538, 559, 538, -585, 474, -585, 474, 510, -474, 510, -474, -584.9)
+
+[node name="Sprite2D" type="Sprite2D" parent="Board"]
+position = Vector2(589, 1267)
+texture = ExtResource("3_7obd2")
+
+[node name="LeftEdge" type="Marker2D" parent="Board"]
+position = Vector2(184, 682)
+
+[node name="RightEdge" type="Marker2D" parent="Board"]
+position = Vector2(985, 686)
+
+[node name="Cloud" type="Sprite2D" parent="Board"]
+position = Vector2(599, 642)
+texture = ExtResource("4_w5q8k")
+
+[node name="CurrentFruit" type="Sprite2D" parent="Board/Cloud"]
+
+[node name="FruitDelay" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[connection signal="timeout" from="FruitDelay" to="." method="_on_fruit_delay_timeout"]

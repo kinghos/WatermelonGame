@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bv2gfrv8ohgv5"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_4ay45"]
-[ext_resource type="Theme" uid="uid://bkerc6l33jv1x" path="res://fonts/ui_theme.tres" id="1_nkhic"]
-[ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://fonts/FredokaOne-Regular.ttf" id="3_ofnea"]
+[ext_resource type="Theme" uid="uid://bkerc6l33jv1x" path="res://resources/fonts/ui_theme.tres" id="1_nkhic"]
+[ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://resources/fonts/FredokaOne-Regular.ttf" id="3_ofnea"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52ryf"]
 

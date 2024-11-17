@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkdvsqkfcgxdt"]
+
+[ext_resource type="Script" path="res://scenes/fruits/pineapple.gd" id="1_50gie"]
+[ext_resource type="Texture2D" uid="uid://c2sob13xyvnw1" path="res://assets/fruits/pineapple.png" id="2_eayh3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r7nqh"]
+radius = 53.0094
+
+[node name="Pineapple" type="RigidBody2D"]
+script = ExtResource("1_50gie")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Fruits"]]
+scale = Vector2(0.121094, 0.121094)
+texture = ExtResource("2_eayh3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_r7nqh")

@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://bkerc6l33jv1x"]
 
-[ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://fonts/FredokaOne-Regular.ttf" id="1_lysoh"]
+[ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://resources/fonts/FredokaOne-Regular.ttf" id="1_lysoh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_414q4"]
 bg_color = Color(0.743307, 0.526064, 0.299291, 1)

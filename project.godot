@@ -15,12 +15,36 @@ run/main_scene="res://scenes/menus/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://globals/Globals.gd"
+
 [display]
 
 window/size/viewport_width=1080
 window/size/viewport_height=2400
 window/stretch/mode="viewport"
 window/handheld/orientation=1
+
+[editor]
+
+movie_writer/movie_file="C:/Users/kings/Desktop/output.mp4"
+
+[global_group]
+
+Fruits=""
+
+[input]
+
+Click={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(224, 16),"global_position":Vector2(233, 62),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+
+[physics]
+
+2d/default_gravity=1500.0
 
 [rendering]
 
