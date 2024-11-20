@@ -128,10 +128,12 @@ text = "Next Fruit"
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Background/InfoPanel/Info/BottomBox/VBoxContainer/NextFruitBox"]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("2_1u3kg")
-stretch_mode = 3
+expand_mode = 1
+stretch_mode = 4
 
 [node name="HeldFruitBox" type="VBoxContainer" parent="Background/InfoPanel/Info/BottomBox/VBoxContainer"]
 layout_mode = 2
@@ -143,10 +145,12 @@ text = "Hold"
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Background/InfoPanel/Info/BottomBox/VBoxContainer/HeldFruitBox"]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("2_1u3kg")
-stretch_mode = 3
+expand_mode = 1
+stretch_mode = 5
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Background"]
 layout_mode = 0
