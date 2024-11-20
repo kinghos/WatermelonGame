@@ -65,7 +65,7 @@ var Textures = {
 
 var Scales = {
 	Fruits.CHERRY: Vector2(0.121, 0.121),
-	Fruits.STRAWBERRY: Vector2(0.15, 0.15),
+	Fruits.STRAWBERRY: Vector2(0.121, 0.121),
 	Fruits.GRAPE: Vector2(0.12, 0.12),
 	Fruits.TANGERINE: Vector2(0.1, 0.1),
 	Fruits.ORANGE: Vector2(0.14, 0.14),
