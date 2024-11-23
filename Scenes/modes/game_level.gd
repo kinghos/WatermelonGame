@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 	_update_ui()
 	if Input.is_action_just_released("Click"):
 		_place_fruit()
+		_update_ui()
 	
 func _physics_process(delta: float) -> void:
 	_check_fruit_merging()
@@ -52,13 +53,13 @@ func _create_fruit_queue():
 	var fruit_queue = Globals.fruit_queue
 	# 2 oranges, 4 tangerines, 5 grapes, 5 strawberries, 4 cherries
 	for i in range(2):
-		fruit_queue += [Globals.Fruits.ORANGE]
-	for i in range(4):
-		fruit_queue += [Globals.Fruits.TANGERINE]
-		fruit_queue += [Globals.Fruits.CHERRY]
-	for i in range(5):
-		fruit_queue += [Globals.Fruits.GRAPE]
-		fruit_queue += [Globals.Fruits.STRAWBERRY]
+		fruit_queue += [Globals.Fruits.LEMON]
+	#for i in range(4):
+		#fruit_queue += [Globals.Fruits.TANGERINE]
+		#fruit_queue += [Globals.Fruits.CHERRY]
+	#for i in range(5):
+		#fruit_queue += [Globals.Fruits.GRAPE]
+		#fruit_queue += [Globals.Fruits.STRAWBERRY]
 	
 	# Fischer-Yates Shuffle
 	var i = len(fruit_queue) - 1
@@ -86,21 +87,28 @@ func _check_fruit_merging():
 		# Filter out all non-RigidBody nodes
 		var contacts = fruit.get_colliding_bodies().filter( 
 			func(node): return node if node is RigidBody2D else null)
+		var merged = false
 		for contact in contacts:
 			# Check if touching fruits are alike
 			if contact.type == fruit.type:
 				print("Merge")
 				if fruit.type != Globals.Fruits["WATERMELON"]:
-					var merged_fruit = Globals.Classes[fruit.type + 1].instantiate()
-					
-					# Take average position between fruits to find collision point
-					merged_fruit.position = (fruit.position + contact.position) / 2
-					merged_fruit.contact_monitor = true
-					merged_fruit.max_contacts_reported = 10
-					
+					if not merged:
+						var merged_fruit = Globals.Classes[fruit.type + 1].instantiate()
+						
+						# Take average position between fruits to find collision point
+						merged_fruit.position = (fruit.position + contact.position) / 2
+						merged_fruit.contact_monitor = true
+						merged_fruit.max_contacts_reported = 10
+						fruits.erase(contact)
+						fruit.queue_free()
+						contact.queue_free()
+						$Fruits.add_child(merged_fruit)
+						merged = true
+						break
+				else:
 					fruit.queue_free()
 					contact.queue_free()
-					$Fruits.add_child(merged_fruit)
 					break
 					
 					
