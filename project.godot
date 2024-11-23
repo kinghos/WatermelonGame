@@ -30,10 +30,6 @@ window/handheld/orientation=1
 
 movie_writer/movie_file="C:/Users/kings/Desktop/output.mp4"
 
-[global_group]
-
-Fruits=""
-
 [input]
 
 Click={

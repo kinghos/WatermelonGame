@@ -1,18 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkdvsqkfcgxdt"]
+[gd_scene load_steps=3 format=3 uid="uid://bkdvsqkfcgxdt"]
 
 [ext_resource type="Script" path="res://scenes/fruits/pineapple.gd" id="1_50gie"]
 [ext_resource type="Texture2D" uid="uid://c2sob13xyvnw1" path="res://assets/fruits/pineapple.png" id="2_eayh3"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_r7nqh"]
-radius = 53.0094
-
 [node name="Pineapple" type="RigidBody2D"]
 script = ExtResource("1_50gie")
 
-[node name="Sprite2D" type="Sprite2D" parent="." groups=["Fruits"]]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.121094, 0.121094)
 texture = ExtResource("2_eayh3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
-shape = SubResource("CircleShape2D_r7nqh")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.121094, 0.121094)
+polygon = PackedVector2Array(-231.1, -337, -235.4, -337, -265.4, -326, -268.4, -326, -331.4, -298, -333.6, -298, -381.5, -265, -383.8, -265, -422.8, -227, -424, -227, -454, -185, -455.2, -185, -481.2, -133, -482.4, -133, -501.4, -75, -502.7, -75, -512, -23.9, -512, 84.7, -506, 113.4, -506, 118.3, -492, 164.2, -492, 167.4, -479, 197.3, -479, 200.5, -447, 260.5, -447, 262.7, -414, 306.6, -414, 308.8, -401, 321.8, -401, 323.9, -348, 372.9, -348, 374, -280, 420.9, -280, 422.2, -214, 456.2, -214, 457.4, -157, 478.4, -157, 479.5, -88, 497.5, -88, 498.7, -42, 506.7, -42, 507.8, -4.89999, 512, 150, 512, 203.3, 503, 208.3, 503, 283.3, 478, 286.5, 478, 329.5, 456, 331.6, 456, 352.6, 442, 354.7, 442, 401.7, 403, 403.9, 403, 446.9, 353, 448.1, 353, 468.1, 320, 469.3, 320, 488.3, 278, 489.5, 278, 497.5, 253, 498.6, 253, 510.7, 195, 512, 195, 512, 72.1, 498, 7.59998, 498, 3.59998, 478, -49.5, 478, -52.5, 455, -97.6, 455, -99.6, 432, -134.7, 432, -136.7, 403, -171.7, 403, -173.8, 369, -207.8, 369, -209, 337, -235.1, 337, -236.1, 301, -260.1, 301, -261.2, 179.5, -331.5, 123.871, -346.838, 90.8385, -355.096, 33.0322, -363.354, 8.25805, -363.354, -74.3224, -363.354, -156.903, -355.096)

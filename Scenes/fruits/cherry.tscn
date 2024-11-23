@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bmxjjvkmisaqw" path="res://assets/fruits/cherry.png" id="1_bejwb"]
 [ext_resource type="Script" path="res://scenes/fruits/cherry.gd" id="1_bpg55"]
 
-[node name="Cherry" type="RigidBody2D" groups=["Fruits"]]
+[node name="Cherry" type="RigidBody2D"]
 contact_monitor = true
 max_contacts_reported = 8
 script = ExtResource("1_bpg55")

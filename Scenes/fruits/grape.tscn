@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/fruits/grape.gd" id="1_sh7tw"]
 [ext_resource type="Texture2D" uid="uid://dw2bjqrl84mlx" path="res://assets/fruits/grape.png" id="2_dejox"]
 
-[node name="Grape" type="RigidBody2D" groups=["Fruits"]]
+[node name="Grape" type="RigidBody2D"]
 script = ExtResource("1_sh7tw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -2,12 +2,14 @@ extends RigidBody2D
 class_name Fruit
 
 var type: int
+
+
 #
 #signal add_fruit(node: Node)
 #
 #func _ready() -> void:
 	#contact_monitor = true
-	#max_contacts_reported = 8
+	#max_contacts_reported = 10
 #
 #func _process(delta: float) -> void:
 	#var contacts = get_colliding_bodies()
