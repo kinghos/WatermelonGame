@@ -10,13 +10,21 @@ extends Node2D
 
 @export var queue_size = 20
 
+var just_held = false
+
+func _ready() -> void:
+	$UI/GameUI.connect("hold_fruit", _hold_fruit)
+
 func _process(delta: float) -> void:
 	_update_fruit_preview()
 	_update_ui()
-	if Input.is_action_just_released("Click"):
+
+	
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_released("Click"):
 		_place_fruit()
 		_update_ui()
-	
+		
 func _physics_process(delta: float) -> void:
 	_check_fruit_merging()
 	
@@ -25,6 +33,8 @@ func _update_ui():
 	if not Globals.fruit_queue:
 		return
 	next_fruit_sprite.texture = Globals.Textures[Globals.fruit_queue[1]]
+	if Globals.held_fruit:		
+		held_fruit_sprite.texture = Globals.Textures[Globals.held_fruit]
 		
 func _update_fruit_preview():
 	if len(Globals.fruit_queue) < 2:
@@ -48,18 +58,19 @@ func _place_fruit():
 		fruit.max_contacts_reported = 10
 		$Fruits.add_child(fruit)
 		current_fruit_sprite.hide()
+		just_held = false
 		
 func _create_fruit_queue():
 	var fruit_queue = Globals.fruit_queue
 	# 2 oranges, 4 tangerines, 5 grapes, 5 strawberries, 4 cherries
 	for i in range(2):
-		fruit_queue += [Globals.Fruits.LEMON]
-	#for i in range(4):
-		#fruit_queue += [Globals.Fruits.TANGERINE]
-		#fruit_queue += [Globals.Fruits.CHERRY]
-	#for i in range(5):
-		#fruit_queue += [Globals.Fruits.GRAPE]
-		#fruit_queue += [Globals.Fruits.STRAWBERRY]
+		fruit_queue += [Globals.Fruits.ORANGE]
+	for i in range(4):
+		fruit_queue += [Globals.Fruits.TANGERINE]
+		fruit_queue += [Globals.Fruits.CHERRY]
+	for i in range(5):
+		fruit_queue += [Globals.Fruits.GRAPE]
+		fruit_queue += [Globals.Fruits.STRAWBERRY]
 	
 	# Fischer-Yates Shuffle
 	var i = len(fruit_queue) - 1
@@ -87,29 +98,39 @@ func _check_fruit_merging():
 		# Filter out all non-RigidBody nodes
 		var contacts = fruit.get_colliding_bodies().filter( 
 			func(node): return node if node is RigidBody2D else null)
-		var merged = false
+		
 		for contact in contacts:
 			# Check if touching fruits are alike
 			if contact.type == fruit.type:
 				print("Merge")
 				if fruit.type != Globals.Fruits["WATERMELON"]:
-					if not merged:
-						var merged_fruit = Globals.Classes[fruit.type + 1].instantiate()
-						
-						# Take average position between fruits to find collision point
-						merged_fruit.position = (fruit.position + contact.position) / 2
-						merged_fruit.contact_monitor = true
-						merged_fruit.max_contacts_reported = 10
-						fruits.erase(contact)
-						fruit.queue_free()
-						contact.queue_free()
-						$Fruits.add_child(merged_fruit)
-						merged = true
-						break
+					var merged_fruit = Globals.Classes[fruit.type + 1].instantiate()
+					
+					# Take average position between fruits to find collision point
+					merged_fruit.position = (fruit.position + contact.position) / 2
+					merged_fruit.contact_monitor = true
+					merged_fruit.max_contacts_reported = 10
+					fruits.erase(contact)
+					fruit.free()
+					contact.free()
+					$Fruits.add_child(merged_fruit)
+					break
 				else:
-					fruit.queue_free()
-					contact.queue_free()
+					fruits.erase(contact)
+					fruit.free()
+					contact.free()
 					break
 					
-					
+func _hold_fruit():
+	if not just_held and $FruitDelay.is_stopped():
+		var temp = Globals.current_fruit
+		Globals.fruit_queue.pop_front()
 		
+		if Globals.held_fruit:
+			Globals.current_fruit = Globals.held_fruit
+			Globals.fruit_queue.insert(0, Globals.current_fruit) # Makes sure it isnt overriden in _update_fruit_preview
+			
+		_update_fruit_preview()
+		Globals.held_fruit = temp
+		just_held = true
+		_update_ui()

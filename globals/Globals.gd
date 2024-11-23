@@ -22,31 +22,17 @@ var Names = {
 }
 
 var Classes = {
-	Fruits.CHERRY: preload("res://scenes/Fruits/cherry.tscn"),
-	Fruits.STRAWBERRY: preload("res://scenes/Fruits/strawberry.tscn"),
-	Fruits.GRAPE: preload("res://scenes/Fruits/grape.tscn"),
-	Fruits.TANGERINE: preload("res://scenes/Fruits/tangerine.tscn"),
-	Fruits.ORANGE: preload("res://scenes/Fruits/orange.tscn"),
-	Fruits.APPLE: preload("res://scenes/Fruits/apple.tscn"),
-	Fruits.LEMON: preload("res://scenes/Fruits/lemon.tscn"),
-	Fruits.PEACH: preload("res://scenes/Fruits/peach.tscn"),
-	Fruits.PINEAPPLE: preload("res://scenes/Fruits/pineapple.tscn"),
-	Fruits.MELON: preload("res://scenes/Fruits/melon.tscn"),
-	Fruits.WATERMELON: preload("res://scenes/Fruits/watermelon.tscn")
-}
-
-var Shapes = {
-	Fruits.CHERRY: preload("res://resources/polygons/cherry.tres"),
-	Fruits.STRAWBERRY: preload("res://resources/polygons/strawberry.tres"),
-	Fruits.GRAPE: preload("res://resources/polygons/grape.tres"),
-	Fruits.TANGERINE: preload("res://resources/polygons/tangerine.tres"),
-	Fruits.ORANGE: preload("res://resources/polygons/orange.tres"),
-	Fruits.APPLE: preload("res://resources/polygons/apple.tres"),
-	Fruits.LEMON: preload("res://resources/polygons/lemon.tres"),
-	Fruits.PEACH: preload("res://resources/polygons/peach.tres"),
-	Fruits.PINEAPPLE: preload("res://resources/polygons/pineapple.tres"),
-	Fruits.MELON: preload("res://resources/polygons/melon.tres"),
-	Fruits.WATERMELON: preload("res://resources/polygons/watermelon.tres")
+	Fruits.CHERRY: preload("res://scenes/fruits/cherry.tscn"),
+	Fruits.STRAWBERRY: preload("res://scenes/fruits/strawberry.tscn"),
+	Fruits.GRAPE: preload("res://scenes/fruits/grape.tscn"),
+	Fruits.TANGERINE: preload("res://scenes/fruits/tangerine.tscn"),
+	Fruits.ORANGE: preload("res://scenes/fruits/orange.tscn"),
+	Fruits.APPLE: preload("res://scenes/fruits/apple.tscn"),
+	Fruits.LEMON: preload("res://scenes/fruits/lemon.tscn"),
+	Fruits.PEACH: preload("res://scenes/fruits/peach.tscn"),
+	Fruits.PINEAPPLE: preload("res://scenes/fruits/pineapple.tscn"),
+	Fruits.MELON: preload("res://scenes/fruits/melon.tscn"),
+	Fruits.WATERMELON: preload("res://scenes/fruits/watermelon.tscn")
 }
 
 var Textures = {
