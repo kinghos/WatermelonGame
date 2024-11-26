@@ -7,6 +7,7 @@ extends Node2D
 @onready var current_fruit_sprite = $Board/Cloud/CurrentFruit
 @onready var next_fruit_sprite: TextureRect = $UI/GameUI/Background/InfoPanel/Info/BottomBox/VBoxContainer/NextFruitBox/TextureRect
 @onready var held_fruit_sprite: TextureRect = $UI/GameUI/Background/InfoPanel/Info/BottomBox/VBoxContainer/HeldFruitBox/TextureRect
+@onready var score_label: Label = $UI/GameUI/Background/InfoPanel/Info/TopBoxPanel/TopBox/ScoreBox/Score
 
 @export var queue_size = 20
 
@@ -35,6 +36,7 @@ func _update_ui():
 	next_fruit_sprite.texture = Globals.Textures[Globals.fruit_queue[1]]
 	if Globals.held_fruit:		
 		held_fruit_sprite.texture = Globals.Textures[Globals.held_fruit]
+	score_label.text = str(Globals.Score)
 		
 func _update_fruit_preview():
 	if len(Globals.fruit_queue) < 2:
@@ -52,11 +54,15 @@ func _place_fruit():
 		fruit_delay.start()
 		var coords = get_global_mouse_position()
 		coords = coords.clamp(left_edge.global_position, right_edge.global_position) # Ensure the fruit cannot fall out of bounds
+		
 		var fruit = Globals.Classes[Globals.current_fruit].instantiate()
 		fruit.position = coords
 		fruit.contact_monitor = true
 		fruit.max_contacts_reported = 10
 		$Fruits.add_child(fruit)
+		
+		Globals.Score += Globals.BaseScores[Globals.current_fruit]
+		
 		current_fruit_sprite.hide()
 		just_held = false
 		
@@ -109,6 +115,7 @@ func _check_fruit_merging():
 					merged_fruit.position = (fruit.position + contact.position) / 2
 					merged_fruit.contact_monitor = true
 					merged_fruit.max_contacts_reported = 10
+					Globals.Score += Globals.MergedScores[fruit.type + 1]
 					fruits.erase(contact)
 					fruit.free()
 					contact.free()

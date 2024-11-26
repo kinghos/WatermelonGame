@@ -90,3 +90,5 @@ var MergedScores = {
 	Fruits.MELON: 200,
 	Fruits.WATERMELON: 500
 }
+
+var Score = 0
