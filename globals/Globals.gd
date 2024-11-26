@@ -62,3 +62,31 @@ var Scales = {
 	Fruits.MELON: Vector2(0.2, 0.2),
 	Fruits.WATERMELON: Vector2(0.25, 0.25)
 }
+
+var BaseScores = {
+	Fruits.CHERRY: 1,
+	Fruits.STRAWBERRY: 2,
+	Fruits.GRAPE: 3,
+	Fruits.TANGERINE: 5,
+	Fruits.ORANGE: 10,
+	Fruits.APPLE: 20,
+	Fruits.LEMON: 30,
+	Fruits.PEACH: 50,
+	Fruits.PINEAPPLE: 100,
+	Fruits.MELON: 200,
+	Fruits.WATERMELON: 500
+}
+
+var MergedScores = {
+	Fruits.CHERRY: 2,
+	Fruits.STRAWBERRY: 6,
+	Fruits.GRAPE: 10,
+	Fruits.TANGERINE: 15,
+	Fruits.ORANGE: 20,
+	Fruits.APPLE: 25,
+	Fruits.LEMON: 50,
+	Fruits.PEACH: 75,
+	Fruits.PINEAPPLE: 100,
+	Fruits.MELON: 200,
+	Fruits.WATERMELON: 500
+}

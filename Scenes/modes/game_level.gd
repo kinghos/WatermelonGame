@@ -102,7 +102,6 @@ func _check_fruit_merging():
 		for contact in contacts:
 			# Check if touching fruits are alike
 			if contact.type == fruit.type:
-				print("Merge")
 				if fruit.type != Globals.Fruits["WATERMELON"]:
 					var merged_fruit = Globals.Classes[fruit.type + 1].instantiate()
 					
