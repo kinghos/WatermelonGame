@@ -34,7 +34,7 @@ func _update_ui():
 	if not Globals.fruit_queue:
 		return
 	next_fruit_sprite.texture = Globals.Textures[Globals.fruit_queue[1]]
-	if Globals.held_fruit:		
+	if not (Globals.held_fruit == null):		
 		held_fruit_sprite.texture = Globals.Textures[Globals.held_fruit]
 	score_label.text = str(Globals.Score)
 		
@@ -132,11 +132,14 @@ func _hold_fruit():
 		var temp = Globals.current_fruit
 		Globals.fruit_queue.pop_front()
 		
-		if Globals.held_fruit:
+		if not(Globals.held_fruit == null):
 			Globals.current_fruit = Globals.held_fruit
 			Globals.fruit_queue.insert(0, Globals.current_fruit) # Makes sure it isnt overriden in _update_fruit_preview
 			
+		
 		_update_fruit_preview()
 		Globals.held_fruit = temp
+		print("HELD", Globals.held_fruit)
+		print("CUR", Globals.current_fruit)
 		just_held = true
 		_update_ui()
