@@ -21,20 +21,21 @@ position = Vector2(-44, 370)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Board"]
 position = Vector2(589, 1267)
-polygon = PackedVector2Array(-538, -585, -538, 559, 538, 559, 538, -585, 474, -585, 474, 510, -474, 510, -474, -584.9)
+polygon = PackedVector2Array(-538, -832, -538, 559, 538, 559, 538, -832, 474, -832, 474, 510, -474, 510, -474, -832)
 
 [node name="Sprite2D" type="Sprite2D" parent="Board"]
-position = Vector2(589, 1267)
+position = Vector2(588, 1145.5)
+scale = Vector2(1, 1.21969)
 texture = ExtResource("3_7obd2")
 
 [node name="LeftEdge" type="Marker2D" parent="Board"]
-position = Vector2(184, 682)
+position = Vector2(184, 412)
 
 [node name="RightEdge" type="Marker2D" parent="Board"]
-position = Vector2(985, 686)
+position = Vector2(985, 412)
 
 [node name="Cloud" type="Sprite2D" parent="Board"]
-position = Vector2(599, 642)
+position = Vector2(600, 412)
 texture = ExtResource("4_w5q8k")
 
 [node name="CurrentFruit" type="Sprite2D" parent="Board/Cloud"]

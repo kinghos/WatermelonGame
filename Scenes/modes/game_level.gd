@@ -70,13 +70,13 @@ func _create_fruit_queue():
 	var fruit_queue = Globals.fruit_queue
 	# 2 oranges, 4 tangerines, 5 grapes, 5 strawberries, 4 cherries
 	for i in range(2):
-		fruit_queue += [Globals.Fruits.ORANGE]
-	for i in range(4):
-		fruit_queue += [Globals.Fruits.TANGERINE]
-		fruit_queue += [Globals.Fruits.CHERRY]
-	for i in range(5):
-		fruit_queue += [Globals.Fruits.GRAPE]
-		fruit_queue += [Globals.Fruits.STRAWBERRY]
+		fruit_queue += [Globals.Fruits.WATERMELON]
+	#for i in range(4):
+		#fruit_queue += [Globals.Fruits.TANGERINE]
+		#fruit_queue += [Globals.Fruits.CHERRY]
+	#for i in range(5):
+		#fruit_queue += [Globals.Fruits.GRAPE]
+		#fruit_queue += [Globals.Fruits.STRAWBERRY]
 	
 	# Fischer-Yates Shuffle
 	var i = len(fruit_queue) - 1
@@ -122,6 +122,7 @@ func _check_fruit_merging():
 					$Fruits.add_child(merged_fruit)
 					break
 				else:
+					Globals.Score += Globals.MergedScores[Globals.Fruits.WATERMELON]
 					fruits.erase(contact)
 					fruit.free()
 					contact.free()
