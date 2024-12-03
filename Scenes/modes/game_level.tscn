@@ -21,7 +21,7 @@ position = Vector2(-44, 370)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Board"]
 position = Vector2(589, 1267)
-polygon = PackedVector2Array(-538, -832, -538, 559, 538, 559, 538, -832, 474, -832, 474, 510, -474, 510, -474, -832)
+polygon = PackedVector2Array(-890, -832, -884, 756, 1104, 759, 1076, -832, 474, -832, 474, 510, -474, 510, -474, -832)
 
 [node name="Sprite2D" type="Sprite2D" parent="Board"]
 position = Vector2(588, 1145.5)
