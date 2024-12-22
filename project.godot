@@ -40,6 +40,7 @@ Click={
 
 [physics]
 
+2d/physics_engine="Rapier2D"
 2d/default_gravity=1500.0
 
 [rendering]

@@ -22,31 +22,31 @@ var Names = {
 }
 
 var Classes = {
-	Fruits.CHERRY: preload("res://scenes/fruits/cherry.tscn"),
-	Fruits.STRAWBERRY: preload("res://scenes/fruits/strawberry.tscn"),
-	Fruits.GRAPE: preload("res://scenes/fruits/grape.tscn"),
-	Fruits.TANGERINE: preload("res://scenes/fruits/tangerine.tscn"),
-	Fruits.ORANGE: preload("res://scenes/fruits/orange.tscn"),
-	Fruits.APPLE: preload("res://scenes/fruits/apple.tscn"),
-	Fruits.LEMON: preload("res://scenes/fruits/lemon.tscn"),
-	Fruits.PEACH: preload("res://scenes/fruits/peach.tscn"),
-	Fruits.PINEAPPLE: preload("res://scenes/fruits/pineapple.tscn"),
-	Fruits.MELON: preload("res://scenes/fruits/melon.tscn"),
-	Fruits.WATERMELON: preload("res://scenes/fruits/watermelon.tscn")
+	Fruits.CHERRY: load("res://scenes/fruits/cherry.tscn"),
+	Fruits.STRAWBERRY: load("res://scenes/fruits/strawberry.tscn"),
+	Fruits.GRAPE: load("res://scenes/fruits/grape.tscn"),
+	Fruits.TANGERINE: load("res://scenes/fruits/tangerine.tscn"),
+	Fruits.ORANGE: load("res://scenes/fruits/orange.tscn"),
+	Fruits.APPLE: load("res://scenes/fruits/apple.tscn"),
+	Fruits.LEMON: load("res://scenes/fruits/lemon.tscn"),
+	Fruits.PEACH: load("res://scenes/fruits/peach.tscn"),
+	Fruits.PINEAPPLE: load("res://scenes/fruits/pineapple.tscn"),
+	Fruits.MELON: load("res://scenes/fruits/melon.tscn"),
+	Fruits.WATERMELON: load("res://scenes/fruits/watermelon.tscn")
 }
 
 var Textures = {
-	Fruits.CHERRY: preload("res://assets/fruits/cherry.png"),
-	Fruits.STRAWBERRY: preload("res://assets/fruits/strawberry.png"),
-	Fruits.GRAPE: preload("res://assets/fruits/grape.png"),
-	Fruits.TANGERINE: preload("res://assets/fruits/tangerine.png"),
-	Fruits.ORANGE: preload("res://assets/fruits/orange.png"),
-	Fruits.APPLE: preload("res://assets/fruits/apple.png"),
-	Fruits.LEMON: preload("res://assets/fruits/lemon.png"),
-	Fruits.PEACH: preload("res://assets/fruits/peach.png"),
-	Fruits.PINEAPPLE: preload("res://assets/fruits/pineapple.png"),
-	Fruits.MELON: preload("res://assets/fruits/melon.png"),
-	Fruits.WATERMELON: preload("res://assets/fruits/watermelon.png")
+	Fruits.CHERRY: load("res://assets/fruits/cherry.png"),
+	Fruits.STRAWBERRY: load("res://assets/fruits/strawberry.png"),
+	Fruits.GRAPE: load("res://assets/fruits/grape.png"),
+	Fruits.TANGERINE: load("res://assets/fruits/tangerine.png"),
+	Fruits.ORANGE: load("res://assets/fruits/orange.png"),
+	Fruits.APPLE: load("res://assets/fruits/apple.png"),
+	Fruits.LEMON: load("res://assets/fruits/lemon.png"),
+	Fruits.PEACH: load("res://assets/fruits/peach.png"),
+	Fruits.PINEAPPLE: load("res://assets/fruits/pineapple.png"),
+	Fruits.MELON: load("res://assets/fruits/melon.png"),
+	Fruits.WATERMELON: load("res://assets/fruits/watermelon.png")
 }
 
 var Scales = {
