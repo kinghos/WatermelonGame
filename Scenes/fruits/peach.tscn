@@ -4,16 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://dbnf4htumtetu" path="res://assets/fruits/peach.png" id="2_vauin"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2lpk4"]
-radius = 165.0
-height = 330.0
+radius = 511.864
+height = 1023.73
 
 [node name="Peach" type="RigidBody2D"]
-mass = 1.7
+mass = 2.75
 script = ExtResource("1_gyvsv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.316, 0.316)
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("2_vauin")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.35, 0.35)
 shape = SubResource("CapsuleShape2D_2lpk4")

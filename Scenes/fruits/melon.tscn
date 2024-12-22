@@ -4,16 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://d2a6rv7buycvv" path="res://assets/fruits/melon.png" id="2_ghn0h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ax0d"]
-radius = 242.0
-height = 484.0
+radius = 519.255
+height = 1038.51
 
 [node name="Melon" type="RigidBody2D"]
-mass = 1.9
+mass = 4.0
 script = ExtResource("1_qxcwp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.471, 0.471)
+scale = Vector2(0.535, 0.535)
 texture = ExtResource("2_ghn0h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.535, 0.535)
 shape = SubResource("CapsuleShape2D_8ax0d")

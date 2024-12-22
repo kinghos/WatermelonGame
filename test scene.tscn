@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://y4w1uqaghvy"]
+[gd_scene load_steps=14 format=3 uid="uid://y4w1uqaghvy"]
 
 [ext_resource type="Texture2D" uid="uid://bg4husm17fda0" path="res://assets/board.png" id="1_lbgfb"]
 [ext_resource type="PackedScene" uid="uid://b1nmbnlivtvpa" path="res://scenes/fruits/cherry.tscn" id="2_dvfqv"]
 [ext_resource type="PackedScene" uid="uid://b6awelvfh845a" path="res://scenes/fruits/strawberry.tscn" id="3_7ayd5"]
 [ext_resource type="PackedScene" uid="uid://vrpmrwetpmek" path="res://scenes/fruits/grape.tscn" id="4_g3i34"]
 [ext_resource type="PackedScene" uid="uid://b5xxr8fheoagr" path="res://scenes/fruits/tangerine.tscn" id="5_2qi4g"]
+[ext_resource type="Texture2D" uid="uid://di5gq3fdk2ajc" path="res://assets/cloud.png" id="6_kxtll"]
 [ext_resource type="PackedScene" uid="uid://bf1a75obornen" path="res://scenes/fruits/orange.tscn" id="6_xbw81"]
 [ext_resource type="PackedScene" uid="uid://doj32otahijcb" path="res://scenes/fruits/apple.tscn" id="7_h710v"]
 [ext_resource type="PackedScene" uid="uid://caxqh2laialyp" path="res://scenes/fruits/lemon.tscn" id="8_73b5s"]
@@ -15,42 +16,59 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(536, 1262)
-polygon = PackedVector2Array(-538, -585, -538, 559, 538, 559, 538, -585, 474, -585, 474, 510, -474, 510, -474, -584.9)
-
-[node name="Sprite2D" type="Sprite2D" parent="CollisionPolygon2D"]
-texture = ExtResource("1_lbgfb")
-
 [node name="Cherry" parent="." instance=ExtResource("2_dvfqv")]
-position = Vector2(3090, 1670)
+position = Vector2(154, 1105)
 
 [node name="Strawberry" parent="." instance=ExtResource("3_7ayd5")]
-position = Vector2(2967, 1680)
+position = Vector2(248, 1087)
 
 [node name="Grape" parent="." instance=ExtResource("4_g3i34")]
-position = Vector2(2822, 1664)
+position = Vector2(540, 556)
 
 [node name="Tangerine" parent="." instance=ExtResource("5_2qi4g")]
-position = Vector2(2689, 1673)
+position = Vector2(733, 1222)
+
+[node name="Board" type="StaticBody2D" parent="."]
+position = Vector2(-58, 21)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Board"]
+position = Vector2(589, 1267)
+polygon = PackedVector2Array(-920, -832, -916, 800, 920, 800, 920, -832, 474, -832, 474, 510, -474, 510, -474, -832)
+
+[node name="Sprite2D" type="Sprite2D" parent="Board"]
+position = Vector2(588, 1145.5)
+scale = Vector2(1, 1.21969)
+texture = ExtResource("1_lbgfb")
+
+[node name="LeftEdge" type="Marker2D" parent="Board"]
+position = Vector2(184, 412)
+
+[node name="RightEdge" type="Marker2D" parent="Board"]
+position = Vector2(985, 412)
+
+[node name="Cloud" type="Sprite2D" parent="Board"]
+position = Vector2(600, 412)
+texture = ExtResource("6_kxtll")
+
+[node name="CurrentFruit" type="Sprite2D" parent="Board/Cloud"]
 
 [node name="Orange" parent="." instance=ExtResource("6_xbw81")]
-position = Vector2(2539, 1664)
+position = Vector2(898, 1185)
 
 [node name="Apple" parent="." instance=ExtResource("7_h710v")]
-position = Vector2(2360, 1666)
+position = Vector2(887, 1381)
 
 [node name="Lemon" parent="." instance=ExtResource("8_73b5s")]
-position = Vector2(816, 1306)
+position = Vector2(876, 1635)
 
 [node name="Peach" parent="." instance=ExtResource("9_e7ifi")]
-position = Vector2(895, 1583)
+position = Vector2(853, 434)
 
 [node name="Pineapple" parent="." instance=ExtResource("10_4vpui")]
-position = Vector2(278, 880)
+position = Vector2(290, 752)
 
 [node name="Melon" parent="." instance=ExtResource("11_vq6qs")]
-position = Vector2(762, 1016)
+position = Vector2(726, 881)
 
 [node name="Watermelon" parent="." instance=ExtResource("12_ve13g")]
-position = Vector2(385, 1452)
+position = Vector2(415, 1447)

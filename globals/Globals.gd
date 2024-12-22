@@ -51,16 +51,16 @@ var Textures = {
 
 var Scales = {
 	Fruits.CHERRY: Vector2(0.085, 0.085),
-	Fruits.STRAWBERRY: Vector2(0.11, 0.11),
-	Fruits.GRAPE: Vector2(0.1, 0.1),
-	Fruits.TANGERINE: Vector2(0.126, 0.126),
-	Fruits.ORANGE: Vector2(0.15, 0.15),
-	Fruits.APPLE: Vector2(0.13, 0.13),
-	Fruits.LEMON: Vector2(0.11, 0.11),
-	Fruits.PEACH: Vector2(0.16, 0.16),
-	Fruits.PINEAPPLE: Vector2(0.18, 0.18),
-	Fruits.MELON: Vector2(0.2, 0.2),
-	Fruits.WATERMELON: Vector2(0.25, 0.25)
+	Fruits.STRAWBERRY: Vector2(0.1, 0.1),
+	Fruits.GRAPE: Vector2(0.11, 0.11),
+	Fruits.TANGERINE: Vector2(0.145, 0.145),
+	Fruits.ORANGE: Vector2(0.205, 0.205),
+	Fruits.APPLE: Vector2(0.25, 0.25),
+	Fruits.LEMON: Vector2(0.29, 0.29),
+	Fruits.PEACH: Vector2(0.35, 0.35),
+	Fruits.PINEAPPLE: Vector2(0.54, 0.54),
+	Fruits.MELON: Vector2(0.535, 0.535),
+	Fruits.WATERMELON: Vector2(0.685, 0.685)
 }
 
 var BaseScores = {

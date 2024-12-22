@@ -4,16 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://dw2bjqrl84mlx" path="res://assets/fruits/grape.png" id="2_dejox"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g86pp"]
-radius = 45.0
-height = 92.0
+radius = 386.667
+height = 1013.33
 
 [node name="Grape" type="RigidBody2D"]
-mass = 1.2
+mass = 1.5
 script = ExtResource("1_sh7tw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_dejox")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.11, 0.11)
 shape = SubResource("CapsuleShape2D_g86pp")

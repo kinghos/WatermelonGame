@@ -4,16 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://b2w1gft2gpj3o" path="res://assets/fruits/watermelon.png" id="2_wtqae"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1hfye"]
-radius = 327.0
-height = 660.0
+radius = 512.0
+height = 1028.0
 
 [node name="Watermelon" type="RigidBody2D"]
-mass = 2.0
+mass = 5.0
 script = ExtResource("1_nhc31")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.636, 0.636)
+scale = Vector2(0.685, 0.685)
 texture = ExtResource("2_wtqae")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.685, 0.685)
 shape = SubResource("CapsuleShape2D_1hfye")

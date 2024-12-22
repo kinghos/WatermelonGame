@@ -4,17 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://25kpp45cnk7h" path="res://assets/fruits/tangerine.png" id="2_k03ij"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ype4"]
-radius = 60.0
-height = 120.0
+radius = 480.0
+height = 971.429
 
 [node name="Tangerine" type="RigidBody2D"]
-mass = 1.3
+mass = 1.7
 script = ExtResource("1_8h3oh")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.126, 0.126)
-texture = ExtResource("2_k03ij")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(-2, -1)
+scale = Vector2(0.145, 0.145)
 shape = SubResource("CapsuleShape2D_8ype4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("2_k03ij")

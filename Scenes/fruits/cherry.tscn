@@ -4,18 +4,19 @@
 [ext_resource type="Script" path="res://scenes/fruits/cherry.gd" id="1_bpg55"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ylkp3"]
-radius = 38.0
-height = 76.0
+radius = 423.529
+height = 847.059
 
 [node name="Cherry" type="RigidBody2D"]
 contact_monitor = true
 max_contacts_reported = 8
 script = ExtResource("1_bpg55")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+scale = Vector2(0.085, 0.085)
+shape = SubResource("CapsuleShape2D_ylkp3")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.085, 0.085)
 texture = ExtResource("1_bejwb")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
-shape = SubResource("CapsuleShape2D_ylkp3")

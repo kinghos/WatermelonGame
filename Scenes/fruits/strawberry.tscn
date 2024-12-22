@@ -4,16 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://b0ir5btcxuihj" path="res://assets/fruits/strawberry.png" id="2_yvlhy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8h3kt"]
-radius = 47.0
-height = 104.0
+radius = 440.0
+height = 960.0
 
 [node name="Strawberry" type="RigidBody2D"]
-mass = 1.1
+mass = 1.2
 script = ExtResource("1_mivu0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.11, 0.11)
-texture = ExtResource("2_yvlhy")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+scale = Vector2(0.1, 0.1)
 shape = SubResource("CapsuleShape2D_8h3kt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_yvlhy")
