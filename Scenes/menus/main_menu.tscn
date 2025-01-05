@@ -4,11 +4,11 @@
 [ext_resource type="Theme" uid="uid://bkerc6l33jv1x" path="res://resources/fonts/ui_theme.tres" id="1_nkhic"]
 [ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://resources/fonts/FredokaOne-Regular.ttf" id="3_ofnea"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52ryf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvvl6"]
 
 [sub_resource type="Theme" id="Theme_tov1h"]
 default_font = ExtResource("3_ofnea")
-/styles/stylebox = SubResource("StyleBoxFlat_52ryf")
+/styles/stylebox = SubResource("StyleBoxFlat_mvvl6")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1t482"]
 
