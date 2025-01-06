@@ -12,7 +12,6 @@ func _ready() -> void:
 
 func _process(_delta) -> void:
 	if peer:
-		print(len(peer.host.get_peers()))
 		if len(peer.host.get_peers()) == 1:
 			$Background/Buttons/StartGame.disabled = false
 
