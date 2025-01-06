@@ -1,7 +1,7 @@
 extends Control
 
 const MAIN_MENU = preload("res://scenes/menus/main_menu.tscn")
-var peer
+var peer: ENetMultiplayerPeer
 var scene = load("res://scenes/modes/multiplayer.tscn")
 
 func _ready() -> void:
@@ -10,12 +10,19 @@ func _ready() -> void:
 	multiplayer.connected_to_server.connect(_connected_to_server)
 	multiplayer.connection_failed.connect(_connection_failed)
 
+func _process(_delta) -> void:
+	if peer:
+		print(len(peer.host.get_peers()))
+		if len(peer.host.get_peers()) == 1:
+			$Background/Buttons/StartGame.disabled = false
+
 # Called on servers and clients
 func _peer_connected(id):
 	print("Player connected with ID ", id)
 
 func _peer_disconnected(id):
 	print("Player disconnected with ID ", id)
+	$Background/Buttons/StartGame.disabled = true
 
 # Called on clients only
 func _connected_to_server():
@@ -38,7 +45,7 @@ func _on_host_pressed() -> void:
 	multiplayer.set_multiplayer_peer(peer)
 	print("Waiting for players")
 	
-	$Background/Buttons/StartGame.disabled = false
+	
 	
 
 func _on_join_pressed() -> void:
