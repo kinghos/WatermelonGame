@@ -56,7 +56,7 @@ func _on_join_pressed() -> void:
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	multiplayer.set_multiplayer_peer(peer)
 
-@rpc("any_peer", "call_local")
+@rpc("any_peer", "call_local", "reliable")
 func _start_game():
 	get_tree().root.add_child(scene.instantiate())
 	self.hide()
