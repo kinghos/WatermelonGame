@@ -3,11 +3,11 @@
 [ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://resources/fonts/FredokaOne-Regular.ttf" id="1_t8kim"]
 [ext_resource type="Script" path="res://scenes/menus/network_menu.gd" id="1_xf7al"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52ryf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3bt4"]
 
 [sub_resource type="Theme" id="Theme_fgwih"]
 default_font = ExtResource("1_t8kim")
-/styles/stylebox = SubResource("StyleBoxFlat_52ryf")
+/styles/stylebox = SubResource("StyleBoxFlat_y3bt4")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0j74j"]
 
@@ -67,6 +67,14 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 180
 
+[node name="StartGame" type="Button" parent="Background/Buttons"]
+layout_mode = 2
+theme = SubResource("Theme_fgwih")
+theme_override_font_sizes/font_size = 86
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0j74j")
+disabled = true
+text = "Start Game"
+
 [node name="Host" type="Button" parent="Background/Buttons"]
 layout_mode = 2
 theme = SubResource("Theme_fgwih")
@@ -88,4 +96,7 @@ theme_override_font_sizes/font_size = 86
 theme_override_styles/focus = SubResource("StyleBoxEmpty_pjpu3")
 text = "Quit"
 
+[connection signal="pressed" from="Background/Buttons/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="Background/Buttons/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Background/Buttons/Join" to="." method="_on_join_pressed"]
 [connection signal="pressed" from="Background/Buttons/Quit" to="." method="_on_quit_pressed"]

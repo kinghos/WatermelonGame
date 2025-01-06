@@ -3,6 +3,8 @@ extends Node
 var current_fruit
 var held_fruit
 var fruit_queue: Array
+var port = 8000
+
 
 enum Fruits {CHERRY, STRAWBERRY, GRAPE, TANGERINE, ORANGE,
 APPLE, LEMON, PEACH, PINEAPPLE, MELON, WATERMELON}
