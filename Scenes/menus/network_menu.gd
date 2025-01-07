@@ -12,8 +12,9 @@ func _ready() -> void:
 
 func _process(_delta) -> void:
 	if peer:
-		if len(peer.host.get_peers()) == 1:
-			$Background/Buttons/StartGame.disabled = false
+		if peer.host:
+			if len(peer.host.get_peers()) == 1:
+				$Background/Buttons/StartGame.disabled = false
 
 # Called on servers and clients
 func _peer_connected(id):
@@ -44,9 +45,6 @@ func _on_host_pressed() -> void:
 	multiplayer.set_multiplayer_peer(peer)
 	print("Waiting for players")
 	
-	
-	
-
 func _on_join_pressed() -> void:
 	peer = ENetMultiplayerPeer.new()
 	var error = peer.create_client("127.0.0.1", Globals.port)
@@ -56,7 +54,7 @@ func _on_join_pressed() -> void:
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	multiplayer.set_multiplayer_peer(peer)
 
-@rpc("any_peer", "call_local", "reliable")
+@rpc("any_peer", "call_local", "reliable") # Called on all devices, remote and local, and packets are sent with TCP
 func _start_game():
 	get_tree().root.add_child(scene.instantiate())
 	self.hide()

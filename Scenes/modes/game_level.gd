@@ -19,6 +19,17 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_update_fruit_preview()
 	_update_ui()
+	
+	var img = get_viewport().get_texture().get_image()
+	# Capture a region of the screen, starting 800 pixels down, and ending 1000 pixels early
+	var region = Rect2i(0, 800, img.get_width(), img.get_height() - 1000)
+	region = img.get_region(region)
+	var tex = ImageTexture.create_from_image(region)
+	$Sprite2D.texture = tex
+	
+	var serialised_texture = var_to_bytes_with_objects(tex)
+	serialised_texture.compress(FileAccess.CompressionMode.COMPRESSION_FASTLZ)
+		
 
 	
 func _unhandled_input(event: InputEvent) -> void:

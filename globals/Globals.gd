@@ -4,7 +4,7 @@ var current_fruit
 var held_fruit
 var fruit_queue: Array
 var port = 8000
-
+var preview_texture: ImageTexture
 
 enum Fruits {CHERRY, STRAWBERRY, GRAPE, TANGERINE, ORANGE,
 APPLE, LEMON, PEACH, PINEAPPLE, MELON, WATERMELON}
