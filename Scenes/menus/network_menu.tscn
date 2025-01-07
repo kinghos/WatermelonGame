@@ -72,7 +72,6 @@ layout_mode = 2
 theme = SubResource("Theme_fgwih")
 theme_override_font_sizes/font_size = 86
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0j74j")
-disabled = true
 text = "Start Game"
 
 [node name="Host" type="Button" parent="Background/Buttons"]

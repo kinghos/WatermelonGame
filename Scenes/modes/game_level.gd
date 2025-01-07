@@ -8,7 +8,7 @@ extends Node2D
 @onready var next_fruit_sprite: TextureRect = $UI/GameUI/Background/InfoPanel/Info/BottomBox/VBoxContainer/NextFruitBox/TextureRect
 @onready var held_fruit_sprite: TextureRect = $UI/GameUI/Background/InfoPanel/Info/BottomBox/VBoxContainer/HeldFruitBox/TextureRect
 @onready var score_label: Label = $UI/GameUI/Background/InfoPanel/Info/TopBoxPanel/TopBox/ScoreBox/Score
-
+@onready var opponent_preview: TextureRect = $UI/GameUI/Background/OpponentPreview
 @export var queue_size = 20
 
 var just_held = false
@@ -19,18 +19,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_update_fruit_preview()
 	_update_ui()
+	_update_opponent_preview()
 	
-	var img = get_viewport().get_texture().get_image()
-	# Capture a region of the screen, starting 800 pixels down, and ending 1000 pixels early
-	var region = Rect2i(0, 800, img.get_width(), img.get_height() - 1000)
-	region = img.get_region(region)
-	var tex = ImageTexture.create_from_image(region)
-	$Sprite2D.texture = tex
-	
-	var serialised_texture = var_to_bytes_with_objects(tex)
-	serialised_texture.compress(FileAccess.CompressionMode.COMPRESSION_FASTLZ)
-		
-
+func _update_opponent_preview():
+	var img = Globals.preview_texture
+	var tex = ImageTexture.new()
+	tex = tex.create_from_image(img)
+	opponent_preview.texture = tex
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("Click"):
