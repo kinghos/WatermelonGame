@@ -17,7 +17,11 @@ var just_held = false
 func _ready() -> void:
 	$UI/GameUI.connect("hold_fruit", _hold_fruit)
 	if Globals.is_singleplayer:
-		$Ui/GameUI/Background/OpponentPanel.hide()
+		$UI/GameUI/Background/OpponentPanel.hide()
+		$UI/GameUI/Background/InfoPanel.size.x = 1040
+	else:
+		$UI/GameUI/Background/OpponentPanel.show()
+		$UI/GameUI/Background/InfoPanel.size.x = 631
 
 
 func _process(delta: float) -> void:
@@ -28,8 +32,7 @@ func _process(delta: float) -> void:
 func _update_opponent_preview():
 	var img = Globals.preview_texture
 	if img:
-		var tex = ImageTexture.new()
-		tex = tex.create_from_image(img)
+		var tex = ImageTexture.create_from_image(img)
 		opponent_preview.texture = tex
 	
 func _unhandled_input(event: InputEvent) -> void:

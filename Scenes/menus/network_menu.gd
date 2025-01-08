@@ -13,12 +13,12 @@ func _ready() -> void:
 	multiplayer.connected_to_server.connect(_connected_to_server)
 	multiplayer.connection_failed.connect(_connection_failed)
 
-func _process(_delta) -> void:
+func _process(_delta) -> void:				
 	if peer:
-		if peer.host:
-			if len(peer.host.get_peers()) == 1:
-				$Background/Buttons/StartGame.disabled = false
-				
+		$Background/Buttons/StartGame.disabled = !(len(multiplayer.get_peers()) == 1)
+		
+
+	
 	if started and Engine.get_process_frames() % 5 == 0:
 		take_screen_capture.rpc()
 
@@ -58,6 +58,7 @@ func _connection_failed():
 	print("Couldn't connect")
 	
 func _on_quit_pressed() -> void:
+	peer.close()
 	get_tree().change_scene_to_packed(MAIN_MENU)
 
 func _on_host_pressed() -> void:
@@ -76,7 +77,6 @@ func _on_join_pressed() -> void:
 	var error = peer.create_client("127.0.0.1", Globals.port)
 	if error != OK:
 		print("Cannot join: ", error)
-		return
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	multiplayer.set_multiplayer_peer(peer)
 

@@ -19,3 +19,4 @@ shadow_size = 10
 [resource]
 default_font = ExtResource("1_lysoh")
 Panel/styles/panel = SubResource("StyleBoxFlat_414q4")
+TextureRect/styles/border = null
