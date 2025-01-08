@@ -6,6 +6,7 @@ var fruit_queue: Array
 var port = 8000
 var serialised_texture: PackedByteArray
 var preview_texture
+var Opponent_score
 
 enum Fruits {CHERRY, STRAWBERRY, GRAPE, TANGERINE, ORANGE,
 APPLE, LEMON, PEACH, PINEAPPLE, MELON, WATERMELON}

@@ -32,17 +32,14 @@ func take_screen_capture():
 	region = img.get_region(region)
 	
 	var raw: PackedByteArray = region.save_jpg_to_buffer()
-	update_preview.rpc(raw)
-	
-	
+	update_preview.rpc(raw, Globals.Score)
+
 @rpc("any_peer", "call_remote", "reliable")
-func update_preview(tex: PackedByteArray):
+func update_preview(tex: PackedByteArray, opponent_score):
 	var image_class = Image.new()
 	image_class.load_jpg_from_buffer(tex)
 	Globals.preview_texture = image_class
-	image_class.save_jpg("user://texture.jpg")
-	
-	
+	Globals.Opponent_score = opponent_score
 
 # Called on servers and clients
 func _peer_connected(id):

@@ -8,8 +8,9 @@ extends Node2D
 @onready var next_fruit_sprite: TextureRect = $UI/GameUI/Background/InfoPanel/Info/BottomBox/VBoxContainer/NextFruitBox/TextureRect
 @onready var held_fruit_sprite: TextureRect = $UI/GameUI/Background/InfoPanel/Info/BottomBox/VBoxContainer/HeldFruitBox/TextureRect
 @onready var score_label: Label = $UI/GameUI/Background/InfoPanel/Info/TopBoxPanel/TopBox/ScoreBox/Score
-@onready var opponent_preview: TextureRect = $UI/GameUI/Background/OpponentPreview
+@onready var opponent_preview: TextureRect = $UI/GameUI/Background/OpponentPanel/OpponentPreview
 @export var queue_size = 20
+@onready var opponent_score_label: Label = $UI/GameUI/Background/OpponentPanel/OpponentScoreLabel
 
 var just_held = false
 
@@ -43,6 +44,8 @@ func _update_ui():
 	if not (Globals.held_fruit == null):		
 		held_fruit_sprite.texture = Globals.Textures[Globals.held_fruit]
 	score_label.text = str(Globals.Score)
+	opponent_score_label.text = "Score: " + str(Globals.Opponent_score)
+	
 		
 func _update_fruit_preview():
 	if len(Globals.fruit_queue) < 2:
