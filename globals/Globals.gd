@@ -7,6 +7,7 @@ var port = 8000
 var serialised_texture: PackedByteArray
 var preview_texture
 var Opponent_score
+var is_singleplayer
 
 enum Fruits {CHERRY, STRAWBERRY, GRAPE, TANGERINE, ORANGE,
 APPLE, LEMON, PEACH, PINEAPPLE, MELON, WATERMELON}
