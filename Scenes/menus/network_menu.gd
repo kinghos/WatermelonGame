@@ -16,12 +16,10 @@ func _ready() -> void:
 func _process(_delta) -> void:				
 	if peer:
 		$Background/Buttons/StartGame.disabled = !(len(multiplayer.get_peers()) == 1)
-		
-
 	
 	if started and Engine.get_process_frames() % 5 == 0:
 		take_screen_capture.rpc()
-
+	
 
 @rpc("any_peer", "call_local", "unreliable_ordered")
 func take_screen_capture():
@@ -58,7 +56,8 @@ func _connection_failed():
 	print("Couldn't connect")
 	
 func _on_quit_pressed() -> void:
-	peer.close()
+	if peer:
+		peer.close()
 	get_tree().change_scene_to_packed(MAIN_MENU)
 
 func _on_host_pressed() -> void:

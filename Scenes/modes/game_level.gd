@@ -11,24 +11,43 @@ extends Node2D
 @onready var opponent_preview: TextureRect = $UI/GameUI/Background/OpponentPanel/OpponentPreview
 @export var queue_size = 20
 @onready var opponent_score_label: Label = $UI/GameUI/Background/OpponentPanel/OpponentScoreLabel
+@onready var timer_label = $UI/GameUI/Background/InfoPanel/Info/TopBoxPanel/TopBox/TimerBox/Timer
+@onready var multiplayer_timer: Timer = $MultiplayerTimer
 
 var just_held = false
+var initial_time
 
 func _ready() -> void:
 	$UI/GameUI.connect("hold_fruit", _hold_fruit)
+	initial_time = Time.get_unix_time_from_system()
+	multiplayer_timer.start()
+	
 	if Globals.is_singleplayer:
 		$UI/GameUI/Background/OpponentPanel.hide()
 		$UI/GameUI/Background/InfoPanel.size.x = 1040
+		
 	else:
 		$UI/GameUI/Background/OpponentPanel.show()
 		$UI/GameUI/Background/InfoPanel.size.x = 631
+		
 
 
 func _process(delta: float) -> void:
 	_update_fruit_preview()
 	_update_ui()
 	_update_opponent_preview()
+	_update_timer()
 	
+func _update_timer():
+	if Globals.is_singleplayer:
+		var current_time = Time.get_unix_time_from_system()
+		var diff = current_time - initial_time
+		timer_label.text = Time.get_time_string_from_unix_time(diff).substr(3)
+	else:
+		multiplayer_timer.start()
+		var time_left = multiplayer_timer.time_left
+		timer_label.text = str(floor(time_left / 60)) + ":" + str(int(time_left) % 60)
+		
 func _update_opponent_preview():
 	var img = Globals.preview_texture
 	if img:
