@@ -57,6 +57,5 @@ scale = Vector2(0.49, 0.49)
 
 [node name="MultiplayerTimer" type="Timer" parent="."]
 wait_time = 600.0
-autostart = true
 
 [connection signal="timeout" from="FruitDelay" to="." method="_on_fruit_delay_timeout"]

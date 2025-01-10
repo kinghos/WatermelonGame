@@ -44,9 +44,9 @@ func _update_timer():
 		var diff = current_time - initial_time
 		timer_label.text = Time.get_time_string_from_unix_time(diff).substr(3)
 	else:
-		multiplayer_timer.start()
 		var time_left = multiplayer_timer.time_left
-		timer_label.text = str(floor(time_left / 60)) + ":" + str(int(time_left) % 60)
+		var format = "%02d:%02d"
+		timer_label.text = format % [time_left / 60, int(time_left) % 60]
 		
 func _update_opponent_preview():
 	var img = Globals.preview_texture
