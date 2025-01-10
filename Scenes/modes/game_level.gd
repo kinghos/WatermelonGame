@@ -16,6 +16,7 @@ extends Node2D
 
 var just_held = false
 var initial_time
+var end_area_fruits: Dictionary
 
 func _ready() -> void:
 	$UI/GameUI.connect("hold_fruit", _hold_fruit)
@@ -61,7 +62,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 func _physics_process(delta: float) -> void:
 	_check_fruit_merging()
-	
+
+func _check_end_fruits():
+	for body in end_area_fruits:
+		var current_time = Time.get_unix_time_from_system()
+		if current_time - end_area_fruits[body] >= 1:
+			print("game over!")
 	
 func _update_ui():
 	if not Globals.fruit_queue:
@@ -179,3 +185,13 @@ func _hold_fruit():
 		print("CUR", Globals.current_fruit)
 		just_held = true
 		_update_ui()
+
+
+func _on_end_area_body_entered(body: Node2D) -> void:
+	if body is RigidBody2D:
+		end_area_fruits[body] = Time.get_unix_time_from_system()
+	
+func _on_end_area_body_exited(body: Node2D) -> void:
+	if body is RigidBody2D:
+		end_area_fruits.erase(body)
+	
