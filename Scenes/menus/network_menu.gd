@@ -4,21 +4,26 @@ const MAIN_MENU = preload("res://scenes/menus/main_menu.tscn")
 var peer: ENetMultiplayerPeer
 var scene = load("res://scenes/modes/multiplayer.tscn")
 var started = false
-
 var client_id
+var game_over
+@export var snapshot_frame_skip: int
+
+signal player_won
 
 func _ready() -> void:
 	multiplayer.peer_connected.connect(_peer_connected)
 	multiplayer.peer_disconnected.connect(_peer_disconnected)
 	multiplayer.connected_to_server.connect(_connected_to_server)
 	multiplayer.connection_failed.connect(_connection_failed)
+	
 
 func _process(_delta) -> void:				
 	if peer:
 		$Background/Buttons/StartGame.disabled = !(len(multiplayer.get_peers()) == 1)
 	
-	if started and Engine.get_process_frames() % 5 == 0:
+	if started and Engine.get_process_frames() % snapshot_frame_skip == 0 and not game_over:
 		take_screen_capture.rpc()
+		
 	
 
 @rpc("any_peer", "call_local", "unreliable_ordered")
@@ -84,6 +89,19 @@ func _start_game():
 	started = true
 	get_tree().root.add_child(scene.instantiate())
 	self.hide()
+	get_parent().get_node("Game").player_lost.connect(_on_player_lost)
 
 func _on_start_game_pressed() -> void:
 	_start_game.rpc()
+	
+func _on_player_lost():
+	game_over = true
+	_player_wins.rpc()
+	await get_tree().create_timer(3).timeout # 3 second wait
+	peer.close()
+	
+@rpc("any_peer", "call_remote", "reliable")
+func _player_wins():
+	game_over = true
+	player_won.emit()
+	peer.close()

@@ -33,7 +33,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.85098, 0.627451, 0.4, 1)
 
-[node name="Title" type="VBoxContainer" parent="Background"]
+[node name="Title" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -41,11 +41,11 @@ anchor_right = 0.5
 offset_left = -459.0
 offset_top = 115.0
 offset_right = 459.0
-offset_bottom = 125.0
+offset_bottom = 474.0
 grow_horizontal = 2
 theme_override_constants/separation = 115
 
-[node name="Label" type="Label" parent="Background/Title"]
+[node name="Label" type="Label" parent="Title"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -55,7 +55,7 @@ text = "WATERMELON GAME"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Buttons" type="VBoxContainer" parent="Background"]
+[node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -63,42 +63,42 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -452.0
-offset_top = -664.0
+offset_top = -1577.0
 offset_right = 452.0
 offset_bottom = -585.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 180
 
-[node name="Singleplayer" type="Button" parent="Background/Buttons"]
+[node name="Singleplayer" type="Button" parent="Buttons"]
 layout_mode = 2
 theme = SubResource("Theme_tov1h")
 theme_override_font_sizes/font_size = 86
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1t482")
 text = "Singleplayer"
 
-[node name="Multiplayer" type="Button" parent="Background/Buttons"]
+[node name="Multiplayer" type="Button" parent="Buttons"]
 layout_mode = 2
 theme = SubResource("Theme_tov1h")
 theme_override_font_sizes/font_size = 86
 theme_override_styles/focus = SubResource("StyleBoxEmpty_q2fgb")
 text = "Multiplayer"
 
-[node name="Options" type="Button" parent="Background/Buttons"]
+[node name="Options" type="Button" parent="Buttons"]
 layout_mode = 2
 theme = SubResource("Theme_tov1h")
 theme_override_font_sizes/font_size = 86
 theme_override_styles/focus = SubResource("StyleBoxEmpty_q2fgb")
 text = "Options"
 
-[node name="Quit" type="Button" parent="Background/Buttons"]
+[node name="Quit" type="Button" parent="Buttons"]
 layout_mode = 2
 theme = SubResource("Theme_tov1h")
 theme_override_font_sizes/font_size = 86
 theme_override_styles/focus = SubResource("StyleBoxEmpty_q2fgb")
 text = "Quit"
 
-[connection signal="pressed" from="Background/Buttons/Singleplayer" to="." method="_on_singleplayer_pressed"]
-[connection signal="pressed" from="Background/Buttons/Multiplayer" to="." method="_on_multiplayer_pressed"]
-[connection signal="pressed" from="Background/Buttons/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Background/Buttons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Buttons/Singleplayer" to="." method="_on_singleplayer_pressed"]
+[connection signal="pressed" from="Buttons/Multiplayer" to="." method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]

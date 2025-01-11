@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsnydv4c3yn7"]
+[gd_scene load_steps=8 format=3 uid="uid://dsnydv4c3yn7"]
 
 [ext_resource type="Script" path="res://scenes/modes/game_level.gd" id="1_l035o"]
-[ext_resource type="PackedScene" uid="uid://bojrg6o8ov2if" path="res://Scenes/menus/game_ui.tscn" id="2_478an"]
+[ext_resource type="PackedScene" uid="uid://bojrg6o8ov2if" path="res://scenes/menus/game_ui.tscn" id="2_478an"]
 [ext_resource type="Texture2D" uid="uid://bg4husm17fda0" path="res://assets/board.png" id="3_7obd2"]
 [ext_resource type="Texture2D" uid="uid://di5gq3fdk2ajc" path="res://assets/cloud.png" id="4_w5q8k"]
 [ext_resource type="Texture2D" uid="uid://41cj000a5jrd" path="res://assets/line.png" id="5_w7cjs"]
+[ext_resource type="PackedScene" uid="uid://jtuem08mkimy" path="res://scenes/menus/game_over.tscn" id="6_28vyu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_deo3p"]
 size = Vector2(1067, 8)
@@ -12,13 +13,29 @@ size = Vector2(1067, 8)
 [node name="Game" type="Node2D"]
 script = ExtResource("1_l035o")
 
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1080.0
+offset_bottom = 2400.0
+color = Color(0.85098, 0.627451, 0.4, 1)
+
 [node name="UI" type="CanvasLayer" parent="."]
-layer = -1
 
 [node name="GameUI" parent="UI" instance=ExtResource("2_478an")]
 offset_left = 6.0
 offset_right = 6.0
 mouse_filter = 1
+
+[node name="Filter" type="ColorRect" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.733333)
+
+[node name="GameOver" parent="UI" instance=ExtResource("6_28vyu")]
+visible = false
 
 [node name="Board" type="StaticBody2D" parent="."]
 position = Vector2(-44, 370)
@@ -38,47 +55,40 @@ position = Vector2(184, 412)
 [node name="RightEdge" type="Marker2D" parent="Board"]
 position = Vector2(985, 412)
 
-[node name="Cloud" type="Sprite2D" parent="Board"]
-position = Vector2(600, 412)
-texture = ExtResource("4_w5q8k")
-
-[node name="CurrentFruit" type="Sprite2D" parent="Board/Cloud"]
-
-[node name="FruitDelay" type="Timer" parent="."]
-wait_time = 0.8
-one_shot = true
-
-[node name="Fruits" type="Node2D" parent="."]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(546, 1488)
-enabled = false
-zoom = Vector2(1, 1.75)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(823, 402)
-scale = Vector2(0.49, 0.49)
-
-[node name="MultiplayerTimer" type="Timer" parent="."]
-wait_time = 600.0
-autostart = true
-
-[node name="EndLine" type="Line2D" parent="."]
+[node name="EndLine" type="Line2D" parent="Board"]
 texture_repeat = 2
-position = Vector2(0, -7)
+position = Vector2(44, -377)
 points = PackedVector2Array(49, 800, 1031, 800)
 default_color = Color(1, 1, 1, 0.537255)
 texture = ExtResource("5_w7cjs")
 texture_mode = 1
 joint_mode = 2
 
-[node name="EndArea" type="Area2D" parent="."]
-position = Vector2(557, 794)
+[node name="EndArea" type="Area2D" parent="Board"]
+position = Vector2(601, 424)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EndArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/EndArea"]
 position = Vector2(-13.5, -1)
 shape = SubResource("RectangleShape2D_deo3p")
 
+[node name="Cloud" type="Sprite2D" parent="Board"]
+position = Vector2(600, 412)
+texture = ExtResource("4_w5q8k")
+
+[node name="CurrentFruit" type="Sprite2D" parent="Board/Cloud"]
+
+[node name="Fruits" type="Node2D" parent="."]
+
+[node name="FruitDelay" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="MultiplayerTimer" type="Timer" parent="."]
+wait_time = 600.0
+autostart = true
+
+[connection signal="update_game_over" from="." to="UI/GameOver" method="_on_game_update_game_over"]
+[connection signal="body_entered" from="Board/EndArea" to="." method="_on_end_area_body_entered"]
+[connection signal="body_exited" from="Board/EndArea" to="." method="_on_end_area_body_exited"]
 [connection signal="timeout" from="FruitDelay" to="." method="_on_fruit_delay_timeout"]
-[connection signal="body_entered" from="EndArea" to="." method="_on_end_area_body_entered"]
-[connection signal="body_exited" from="EndArea" to="." method="_on_end_area_body_exited"]
+[connection signal="timeout" from="MultiplayerTimer" to="." method="_on_multiplayer_timer_timeout"]

@@ -3,11 +3,11 @@
 [ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://resources/fonts/FredokaOne-Regular.ttf" id="1_t8kim"]
 [ext_resource type="Script" path="res://scenes/menus/network_menu.gd" id="1_xf7al"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3bt4"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8ti3"]
 
 [sub_resource type="Theme" id="Theme_fgwih"]
 default_font = ExtResource("1_t8kim")
-/styles/stylebox = SubResource("StyleBoxFlat_y3bt4")
+/styles/stylebox = SubResource("StyleBoxFlat_y8ti3")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0j74j"]
 
@@ -21,6 +21,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xf7al")
+snapshot_frame_skip = 10
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1

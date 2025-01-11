@@ -5,39 +5,50 @@ extends Node2D
 @onready var fruit_delay: Timer = $FruitDelay
 @onready var cloud: Sprite2D = $Board/Cloud
 @onready var current_fruit_sprite = $Board/Cloud/CurrentFruit
-@onready var next_fruit_sprite: TextureRect = $UI/GameUI/Background/InfoPanel/Info/BottomBox/VBoxContainer/NextFruitBox/TextureRect
-@onready var held_fruit_sprite: TextureRect = $UI/GameUI/Background/InfoPanel/Info/BottomBox/VBoxContainer/HeldFruitBox/TextureRect
-@onready var score_label: Label = $UI/GameUI/Background/InfoPanel/Info/TopBoxPanel/TopBox/ScoreBox/Score
-@onready var opponent_preview: TextureRect = $UI/GameUI/Background/OpponentPanel/OpponentPreview
+@onready var next_fruit_sprite: TextureRect = $UI/GameUI/InfoPanel/Info/BottomBox/VBoxContainer/NextFruitBox/TextureRect
+@onready var held_fruit_sprite: TextureRect = $UI/GameUI/InfoPanel/Info/BottomBox/VBoxContainer/HeldFruitBox/TextureRect
+@onready var score_label: Label = $UI/GameUI/InfoPanel/Info/TopBoxPanel/TopBox/ScoreBox/Score
+@onready var opponent_preview: TextureRect = $UI/GameUI/OpponentPanel/OpponentPreview
 @export var queue_size = 20
-@onready var opponent_score_label: Label = $UI/GameUI/Background/OpponentPanel/OpponentScoreLabel
-@onready var timer_label = $UI/GameUI/Background/InfoPanel/Info/TopBoxPanel/TopBox/TimerBox/Timer
+@onready var opponent_score_label: Label = $UI/GameUI/OpponentPanel/OpponentScoreLabel
+@onready var timer_label = $UI/GameUI/InfoPanel/Info/TopBoxPanel/TopBox/TimerBox/Timer
 @onready var multiplayer_timer: Timer = $MultiplayerTimer
 
 var just_held = false
 var initial_time
 var end_area_fruits: Dictionary
+var game_over = false
+var connected = false
+
+signal player_lost
+signal update_game_over(won: bool)
 
 func _ready() -> void:
 	$UI/GameUI.connect("hold_fruit", _hold_fruit)
 	initial_time = Time.get_unix_time_from_system()
 	multiplayer_timer.start()
+	Globals.Score = 0
 	
 	if Globals.is_singleplayer:
-		$UI/GameUI/Background/OpponentPanel.hide()
-		$UI/GameUI/Background/InfoPanel.size.x = 1040
-		
+		$UI/GameUI/OpponentPanel.hide()
+		$UI/GameUI/InfoPanel.size.x = 1040
 	else:
-		$UI/GameUI/Background/OpponentPanel.show()
-		$UI/GameUI/Background/InfoPanel.size.x = 631
+		$UI/GameUI/OpponentPanel.show()
+		$UI/GameUI/InfoPanel.size.x = 631
 		
-
 
 func _process(delta: float) -> void:
-	_update_fruit_preview()
-	_update_ui()
-	_update_opponent_preview()
-	_update_timer()
+	if not game_over:
+		_update_fruit_preview()
+		_update_ui()
+		_update_opponent_preview()
+		_update_timer()
+		_check_end_fruits()
+	if not Globals.is_singleplayer and not connected:
+		var error = get_parent().get_node("Network Menu").player_won.connect(_on_player_won)
+		if error == OK:
+			connected = true
+		
 	
 func _update_timer():
 	if Globals.is_singleplayer:
@@ -56,18 +67,13 @@ func _update_opponent_preview():
 		opponent_preview.texture = tex
 	
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_released("Click"):
+	if event.is_action_released("Click") and not game_over:
 		_place_fruit()
 		_update_ui()
 		
 func _physics_process(delta: float) -> void:
 	_check_fruit_merging()
 
-func _check_end_fruits():
-	for body in end_area_fruits:
-		var current_time = Time.get_unix_time_from_system()
-		if current_time - end_area_fruits[body] >= 1:
-			print("game over!")
 	
 func _update_ui():
 	if not Globals.fruit_queue:
@@ -181,8 +187,6 @@ func _hold_fruit():
 		
 		_update_fruit_preview()
 		Globals.held_fruit = temp
-		print("HELD", Globals.held_fruit)
-		print("CUR", Globals.current_fruit)
 		just_held = true
 		_update_ui()
 
@@ -195,3 +199,29 @@ func _on_end_area_body_exited(body: Node2D) -> void:
 	if body is RigidBody2D:
 		end_area_fruits.erase(body)
 	
+func _check_end_fruits():
+	for body in end_area_fruits:
+		var time_in_area = Time.get_unix_time_from_system() - end_area_fruits[body]
+		if time_in_area >= 1:
+			print("Game Over!")
+			_game_over_state("lost")
+			
+func _game_over_state(win_string: String):
+	game_over = true
+	var fruits = $Fruits.get_children()
+	for fruit in fruits:
+		fruit.freeze = true
+	$UI/Filter.visible = true
+	$"UI/GameOver".visible = true
+	update_game_over.emit(win_string)
+	if not Globals.is_singleplayer:
+		player_lost.emit()
+
+func _on_player_won():
+	_game_over_state("won")
+	
+func _on_multiplayer_timer_timeout() -> void:
+	if Globals.Score < Globals.Opponent_score:
+		_game_over_state("lost")
+	elif Globals.Score == Globals.Opponent_score:
+		_game_over_state("drew")
