@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://u7pmkc71bkfr"]
+[gd_scene load_steps=8 format=3 uid="uid://u7pmkc71bkfr"]
 
+[ext_resource type="Theme" uid="uid://bkerc6l33jv1x" path="res://resources/fonts/ui_theme.tres" id="1_q44bv"]
 [ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://resources/fonts/FredokaOne-Regular.ttf" id="1_t8kim"]
 [ext_resource type="Script" path="res://scenes/menus/network_menu.gd" id="1_xf7al"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8ti3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uqcg"]
 
 [sub_resource type="Theme" id="Theme_fgwih"]
 default_font = ExtResource("1_t8kim")
-/styles/stylebox = SubResource("StyleBoxFlat_y8ti3")
+/styles/stylebox = SubResource("StyleBoxFlat_4uqcg")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0j74j"]
 
@@ -20,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_q44bv")
 script = ExtResource("1_xf7al")
 snapshot_frame_skip = 10
 
@@ -42,7 +44,7 @@ offset_top = 115.0
 offset_right = 459.0
 offset_bottom = 125.0
 grow_horizontal = 2
-theme_override_constants/separation = 115
+theme_override_constants/separation = 176
 
 [node name="Label" type="Label" parent="Background/Title"]
 layout_mode = 2
@@ -52,6 +54,13 @@ theme = SubResource("Theme_fgwih")
 theme_override_font_sizes/font_size = 146
 text = "Multiplayer"
 horizontal_alignment = 1
+
+[node name="Status" type="Label" parent="Background/Title"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 115
+horizontal_alignment = 1
+autowrap_mode = 2
+max_lines_visible = 2
 
 [node name="Buttons" type="VBoxContainer" parent="Background"]
 layout_mode = 1
@@ -90,14 +99,14 @@ theme_override_font_sizes/font_size = 86
 theme_override_styles/focus = SubResource("StyleBoxEmpty_pjpu3")
 text = "Join"
 
-[node name="Quit" type="Button" parent="Background/Buttons"]
+[node name="Main Menu" type="Button" parent="Background/Buttons"]
 layout_mode = 2
 theme = SubResource("Theme_fgwih")
 theme_override_font_sizes/font_size = 86
 theme_override_styles/focus = SubResource("StyleBoxEmpty_pjpu3")
-text = "Quit"
+text = "Main Menu"
 
 [connection signal="pressed" from="Background/Buttons/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="Background/Buttons/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Background/Buttons/Join" to="." method="_on_join_pressed"]
-[connection signal="pressed" from="Background/Buttons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Background/Buttons/Main Menu" to="." method="_on_quit_pressed"]

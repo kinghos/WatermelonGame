@@ -5,14 +5,17 @@ extends Node2D
 @onready var fruit_delay: Timer = $FruitDelay
 @onready var cloud: Sprite2D = $Board/Cloud
 @onready var current_fruit_sprite = $Board/Cloud/CurrentFruit
-@onready var next_fruit_sprite: TextureRect = $UI/GameUI/InfoPanel/Info/BottomBox/VBoxContainer/NextFruitBox/TextureRect
-@onready var held_fruit_sprite: TextureRect = $UI/GameUI/InfoPanel/Info/BottomBox/VBoxContainer/HeldFruitBox/TextureRect
-@onready var score_label: Label = $UI/GameUI/InfoPanel/Info/TopBoxPanel/TopBox/ScoreBox/Score
+@onready var next_fruit_sprite: TextureRect = $UI/GameUI/InfoPanel/Info/BottomBox/VBoxContainer/NextFruitBox/Box/TextureRect
+@onready var held_fruit_sprite: TextureRect = $UI/GameUI/InfoPanel/Info/BottomBox/VBoxContainer/HeldFruitBox/Box/TextureRect
+@onready var score_label: Label = $UI/GameUI/InfoPanel/Info/TopBox/ScoreBox/Score
 @onready var opponent_preview: TextureRect = $UI/GameUI/OpponentPanel/OpponentPreview
 @export var queue_size = 20
 @onready var opponent_score_label: Label = $UI/GameUI/OpponentPanel/OpponentScoreLabel
-@onready var timer_label = $UI/GameUI/InfoPanel/Info/TopBoxPanel/TopBox/TimerBox/Timer
+@onready var timer_label = $UI/GameUI/InfoPanel/Info/TopBox/TimerBox/Timer
 @onready var multiplayer_timer: Timer = $MultiplayerTimer
+@onready var filter: ColorRect = $UI/Filter
+@onready var pause_menu: Control = $UI/PauseMenu
+@onready var instructions: Control = $UI/Instructions
 
 var just_held = false
 var initial_time
@@ -32,6 +35,10 @@ func _ready() -> void:
 	if Globals.is_singleplayer:
 		$UI/GameUI/OpponentPanel.hide()
 		$UI/GameUI/InfoPanel.size.x = 1040
+		
+		instructions.show()
+		filter.show()
+		get_tree().paused = true
 	else:
 		$UI/GameUI/OpponentPanel.show()
 		$UI/GameUI/InfoPanel.size.x = 631
@@ -211,17 +218,34 @@ func _game_over_state(win_string: String):
 	var fruits = $Fruits.get_children()
 	for fruit in fruits:
 		fruit.freeze = true
-	$UI/Filter.visible = true
+	filter.visible = true
 	$"UI/GameOver".visible = true
 	update_game_over.emit(win_string)
 	if not Globals.is_singleplayer:
 		player_lost.emit()
 
-func _on_player_won():
-	_game_over_state("won")
+func _on_player_won(disconnected):
+	# Ternary operator
+	_game_over_state("won" + " (Opponent disconnected)" if disconnected else "")
 	
 func _on_multiplayer_timer_timeout() -> void:
 	if Globals.Score < Globals.Opponent_score:
 		_game_over_state("lost")
 	elif Globals.Score == Globals.Opponent_score:
 		_game_over_state("drew")
+
+func _on_pause_pressed() -> void:
+	if Globals.is_singleplayer:
+		get_tree().paused = true
+	filter.visible = true
+	pause_menu.show()
+
+func _on_pause_menu_unpaused() -> void:
+	get_tree().paused = false
+	filter.visible = false
+	pause_menu.hide()
+
+func _on_instructions_unpaused() -> void:
+	get_tree().paused = false
+	filter.visible = false
+	instructions.hide()

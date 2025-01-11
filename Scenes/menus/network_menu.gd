@@ -7,8 +7,9 @@ var started = false
 var client_id
 var game_over
 @export var snapshot_frame_skip: int
+@onready var status: Label = $Background/Title/Status
 
-signal player_won
+signal player_won(disconnected)
 
 func _ready() -> void:
 	multiplayer.peer_connected.connect(_peer_connected)
@@ -52,13 +53,20 @@ func _peer_connected(id):
 func _peer_disconnected(id):
 	print("Player disconnected with ID ", id)
 	$Background/Buttons/StartGame.disabled = true
+	_update_status.rpc("Disconnected")
+	if started:
+		player_won.emit(true)
+		game_over = true
+		peer.close()
 
 # Called on clients only
 func _connected_to_server():
 	print("Connected to server")
+	_update_status.rpc("Connected!")
 	
 func _connection_failed():
 	print("Couldn't connect")
+	_update_status.rpc("Couldn't connect")
 	
 func _on_quit_pressed() -> void:
 	if peer:
@@ -70,19 +78,24 @@ func _on_host_pressed() -> void:
 	var error = peer.create_server(Globals.port, 2)
 	if error != OK:
 		print("Cannot host: ", error)
+		status.text = "Cannot host, server exists"
 		return
+	$Background/Buttons/Join.disabled = true
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER) # Sets compression mode
 	
 	multiplayer.set_multiplayer_peer(peer)
 	print("Waiting for players")
+	status.text = "Waiting..."
 	
 func _on_join_pressed() -> void:
 	peer = ENetMultiplayerPeer.new()
 	var error = peer.create_client("127.0.0.1", Globals.port)
 	if error != OK:
 		print("Cannot join: ", error)
+		status.text = "Cannot join"
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	multiplayer.set_multiplayer_peer(peer)
+	status.text = "Joining..."
 
 @rpc("any_peer", "call_local", "reliable") # Called on all devices, remote and local, and packets are sent with TCP
 func _start_game():
@@ -90,6 +103,7 @@ func _start_game():
 	get_tree().root.add_child(scene.instantiate())
 	self.hide()
 	get_parent().get_node("Game").player_lost.connect(_on_player_lost)
+	get_parent().get_node("Game/UI/PauseMenu").unpaused.connect(_on_unpaused)
 
 func _on_start_game_pressed() -> void:
 	_start_game.rpc()
@@ -103,5 +117,12 @@ func _on_player_lost():
 @rpc("any_peer", "call_remote", "reliable")
 func _player_wins():
 	game_over = true
-	player_won.emit()
+	player_won.emit(false)
+	peer.close()
+
+@rpc("any_peer", "call_local", "reliable")
+func _update_status(text):
+	status.text = text
+
+func _on_unpaused():
 	peer.close()

@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://scenes/menus/game_over.gd" id="2_443nn"]
 [ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://resources/fonts/FredokaOne-Regular.ttf" id="2_yu4lp"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3bt4"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6gdq"]
 
 [sub_resource type="Theme" id="Theme_ctl7n"]
 default_font = ExtResource("2_yu4lp")
-/styles/stylebox = SubResource("StyleBoxFlat_y3bt4")
+/styles/stylebox = SubResource("StyleBoxFlat_s6gdq")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_837u8"]
 
@@ -51,10 +51,14 @@ text = "Game Over!"
 horizontal_alignment = 1
 
 [node name="WinLabel" type="Label" parent="Panel/Title"]
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
+size_flags_vertical = 1
 theme_override_font_sizes/font_size = 97
 text = "You lose!"
 horizontal_alignment = 1
+autowrap_mode = 1
+max_lines_visible = 2
 
 [node name="Buttons" type="VBoxContainer" parent="Panel"]
 layout_mode = 1

@@ -1,6 +1,27 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bkerc6l33jv1x"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bkerc6l33jv1x"]
 
+[ext_resource type="Texture2D" uid="uid://dowf1455wokcf" path="res://assets/slider.png" id="1_c3hkh"]
 [ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://resources/fonts/FredokaOne-Regular.ttf" id="1_lysoh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cyw28"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq8h0"]
+bg_color = Color(0.235315, 0.164136, 0.0864248, 1)
+corner_radius_top_left = 200
+corner_radius_top_right = 200
+corner_radius_bottom_right = 200
+corner_radius_bottom_left = 200
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfuoi"]
+bg_color = Color(0.356863, 0.270588, 0.180392, 1)
+corner_radius_top_left = 200
+corner_radius_top_right = 200
+corner_radius_bottom_right = 200
+corner_radius_bottom_left = 200
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_414q4"]
 bg_color = Color(0.743307, 0.526064, 0.299291, 1)
@@ -18,5 +39,10 @@ shadow_size = 10
 
 [resource]
 default_font = ExtResource("1_lysoh")
+Button/styles/focus = SubResource("StyleBoxEmpty_cyw28")
+HSlider/icons/grabber = ExtResource("1_c3hkh")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_jq8h0")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_jq8h0")
+HSlider/styles/slider = SubResource("StyleBoxFlat_wfuoi")
 Panel/styles/panel = SubResource("StyleBoxFlat_414q4")
 TextureRect/styles/border = null

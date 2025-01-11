@@ -1,0 +1,128 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5ee3huowglg1"]
+
+[ext_resource type="Theme" uid="uid://bkerc6l33jv1x" path="res://resources/fonts/ui_theme.tres" id="1_guijs"]
+[ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://resources/fonts/FredokaOne-Regular.ttf" id="2_re7fq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8ti3"]
+
+[sub_resource type="Theme" id="Theme_bfda7"]
+default_font = ExtResource("2_re7fq")
+/styles/stylebox = SubResource("StyleBoxFlat_y8ti3")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thb3j"]
+
+[sub_resource type="Theme" id="Theme_ok02g"]
+default_font = ExtResource("2_re7fq")
+/styles/stylebox = SubResource("StyleBoxFlat_thb3j")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_chb37"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_guijs")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.85098, 0.627451, 0.4, 1)
+
+[node name="Title" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -459.0
+offset_top = 115.0
+offset_right = 459.0
+offset_bottom = 125.0
+grow_horizontal = 2
+theme_override_constants/separation = 176
+
+[node name="Label" type="Label" parent="Background/Title"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = SubResource("Theme_bfda7")
+theme_override_font_sizes/font_size = 146
+text = "Options"
+horizontal_alignment = 1
+
+[node name="OptionsList" type="HBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 36.0
+offset_top = -474.0
+offset_right = -36.0
+offset_bottom = 543.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="Labels" type="VBoxContainer" parent="Background/OptionsList"]
+layout_mode = 2
+theme_override_constants/separation = 350
+
+[node name="Label" type="Label" parent="Background/OptionsList/Labels"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 81
+text = "Sound Effects
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Background/OptionsList/Labels"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 81
+text = "Music"
+horizontal_alignment = 1
+
+[node name="Controls" type="VBoxContainer" parent="Background/OptionsList"]
+layout_mode = 2
+theme_override_constants/separation = 350
+
+[node name="SFXSlider" type="HSlider" parent="Background/OptionsList/Controls"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 91.0
+rounded = true
+
+[node name="MusicSlider" type="HSlider" parent="Background/OptionsList/Controls"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+rounded = true
+tick_count = 1
+
+[node name="Close" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -263.0
+offset_top = -318.0
+offset_right = 263.0
+offset_bottom = -205.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_ok02g")
+theme_override_font_sizes/font_size = 86
+theme_override_styles/focus = SubResource("StyleBoxEmpty_chb37")
+text = "Close
+"
