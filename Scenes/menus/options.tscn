@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5ee3huowglg1"]
+[gd_scene load_steps=9 format=3 uid="uid://c5ee3huowglg1"]
 
 [ext_resource type="Theme" uid="uid://bkerc6l33jv1x" path="res://resources/fonts/ui_theme.tres" id="1_guijs"]
+[ext_resource type="Script" path="res://scenes/menus/options.gd" id="2_q0nnj"]
 [ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://resources/fonts/FredokaOne-Regular.ttf" id="2_re7fq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8ti3"]
@@ -25,6 +26,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_guijs")
+script = ExtResource("2_q0nnj")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -109,16 +111,16 @@ rounded = true
 tick_count = 1
 
 [node name="Close" type="Button" parent="Background"]
+process_mode = 3
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -263.0
-offset_top = -318.0
-offset_right = 263.0
-offset_bottom = -205.0
+offset_left = 39.0
+offset_top = -265.0
+offset_right = -39.0
+offset_bottom = -152.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_ok02g")
@@ -126,3 +128,5 @@ theme_override_font_sizes/font_size = 86
 theme_override_styles/focus = SubResource("StyleBoxEmpty_chb37")
 text = "Close
 "
+
+[connection signal="pressed" from="Background/Close" to="." method="_on_close_pressed"]

@@ -41,6 +41,7 @@ shadow_size = 10
 default_font = ExtResource("1_lysoh")
 Button/styles/focus = SubResource("StyleBoxEmpty_cyw28")
 HSlider/icons/grabber = ExtResource("1_c3hkh")
+HSlider/icons/grabber_highlight = ExtResource("1_c3hkh")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_jq8h0")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_jq8h0")
 HSlider/styles/slider = SubResource("StyleBoxFlat_wfuoi")

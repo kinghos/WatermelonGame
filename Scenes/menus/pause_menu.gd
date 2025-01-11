@@ -12,3 +12,6 @@ func _on_main_menu_pressed() -> void:
 
 func _on_close_pressed() -> void:
 	unpaused.emit()
+
+func _on_options_pressed() -> void:
+	get_parent().get_node("Options").show()
