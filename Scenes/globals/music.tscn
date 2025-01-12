@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmefpp1nn6tlj"]
+
+[ext_resource type="AudioStream" uid="uid://d0addbr8i4vcn" path="res://assets/audio/Local Forecast - Elevator.mp3" id="1_x15um"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_x15um")
+autoplay = true
+bus = &"Music"
+parameters/looping = true

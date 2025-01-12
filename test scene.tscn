@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://y4w1uqaghvy"]
 
-[ext_resource type="Texture2D" uid="uid://bg4husm17fda0" path="res://assets/board.png" id="1_lbgfb"]
+[ext_resource type="Texture2D" uid="uid://bg4husm17fda0" path="res://assets/ui/board.png" id="1_lbgfb"]
 [ext_resource type="PackedScene" uid="uid://b1nmbnlivtvpa" path="res://scenes/fruits/cherry.tscn" id="2_dvfqv"]
 [ext_resource type="PackedScene" uid="uid://b6awelvfh845a" path="res://scenes/fruits/strawberry.tscn" id="3_7ayd5"]
 [ext_resource type="PackedScene" uid="uid://vrpmrwetpmek" path="res://scenes/fruits/grape.tscn" id="4_g3i34"]
 [ext_resource type="PackedScene" uid="uid://b5xxr8fheoagr" path="res://scenes/fruits/tangerine.tscn" id="5_2qi4g"]
-[ext_resource type="Texture2D" uid="uid://di5gq3fdk2ajc" path="res://assets/cloud.png" id="6_kxtll"]
+[ext_resource type="Texture2D" uid="uid://di5gq3fdk2ajc" path="res://assets/ui/cloud.png" id="6_kxtll"]
 [ext_resource type="PackedScene" uid="uid://bf1a75obornen" path="res://scenes/fruits/orange.tscn" id="6_xbw81"]
 [ext_resource type="PackedScene" uid="uid://doj32otahijcb" path="res://scenes/fruits/apple.tscn" id="7_h710v"]
 [ext_resource type="PackedScene" uid="uid://caxqh2laialyp" path="res://scenes/fruits/lemon.tscn" id="8_73b5s"]

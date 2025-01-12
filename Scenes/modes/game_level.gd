@@ -16,6 +16,10 @@ extends Node2D
 @onready var filter: ColorRect = $UI/Filter
 @onready var pause_menu: Control = $UI/PauseMenu
 @onready var instructions: Control = $UI/Instructions
+@onready var pop: AudioStreamPlayer = $Pop
+@onready var merge: AudioStreamPlayer = $Merge
+
+const pop_sfx = preload("res://assets/audio/pop.mp3")
 
 var just_held = false
 var initial_time
@@ -115,6 +119,8 @@ func _place_fruit():
 		fruit.max_contacts_reported = 10
 		$Fruits.add_child(fruit)
 		
+		pop.play()
+		
 		Globals.Score += Globals.BaseScores[Globals.current_fruit]
 		
 		current_fruit_sprite.hide()
@@ -174,6 +180,7 @@ func _check_fruit_merging():
 					fruit.free()
 					contact.free()
 					$Fruits.add_child(merged_fruit)
+					merge.play()
 					break
 				else:
 					Globals.Score += Globals.MergedScores[Globals.Fruits.WATERMELON]

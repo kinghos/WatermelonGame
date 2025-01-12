@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://bkerc6l33jv1x"]
 
-[ext_resource type="Texture2D" uid="uid://dowf1455wokcf" path="res://assets/slider.png" id="1_c3hkh"]
+[ext_resource type="Texture2D" uid="uid://dowf1455wokcf" path="res://assets/ui/slider.png" id="1_c3hkh"]
 [ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://resources/fonts/FredokaOne-Regular.ttf" id="1_lysoh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cyw28"]

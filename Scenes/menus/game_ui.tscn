@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://resources/fonts/FredokaOne-Regular.ttf" id="2_fruyp"]
 [ext_resource type="Script" path="res://scenes/menus/game_ui.gd" id="2_y55al"]
 [ext_resource type="Texture2D" uid="uid://dgllkn2vkafia" path="res://assets/fruits/cycle.png" id="4_m8ipe"]
-[ext_resource type="Texture2D" uid="uid://cq7prn8jfn846" path="res://assets/box.png" id="5_1miql"]
+[ext_resource type="Texture2D" uid="uid://cq7prn8jfn846" path="res://assets/ui/box.png" id="5_1miql"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52ryf"]
 
