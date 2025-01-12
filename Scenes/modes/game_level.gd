@@ -37,6 +37,7 @@ func _ready() -> void:
 	initial_time = Time.get_unix_time_from_system()
 	multiplayer_timer.start()
 	Globals.Score = 0
+	Globals.held_fruit = null
 	
 	if Globals.is_singleplayer:
 		$UI/GameUI/OpponentPanel.hide()
