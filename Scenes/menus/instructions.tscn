@@ -30,6 +30,7 @@ theme = ExtResource("1_ckl0s")
 script = ExtResource("2_23u65")
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 61.0
 offset_top = 499.0
 offset_right = 1019.0

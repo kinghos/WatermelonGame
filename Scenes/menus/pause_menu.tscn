@@ -24,6 +24,7 @@ theme = ExtResource("1_xqtq1")
 script = ExtResource("2_uerwr")
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 61.0
 offset_top = 499.0
 offset_right = 1019.0

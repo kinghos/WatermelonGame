@@ -11,6 +11,8 @@ extends Node2D
 @onready var opponent_preview: TextureRect = $UI/GameUI/OpponentPanel/OpponentPreview
 @export var queue_size = 20
 @onready var opponent_score_label: Label = $UI/GameUI/OpponentPanel/OpponentScoreLabel
+@onready var high_score_box: VBoxContainer = $UI/GameUI/InfoPanel/Info/TopBox/HighScoreBox
+@onready var high_score_label: Label = $UI/GameUI/InfoPanel/Info/TopBox/HighScoreBox/HighScore
 @onready var timer_label = $UI/GameUI/InfoPanel/Info/TopBox/TimerBox/Timer
 @onready var multiplayer_timer: Timer = $MultiplayerTimer
 @onready var filter: ColorRect = $UI/Filter
@@ -39,6 +41,10 @@ func _ready() -> void:
 	if Globals.is_singleplayer:
 		$UI/GameUI/OpponentPanel.hide()
 		$UI/GameUI/InfoPanel.size.x = 1040
+		high_score_box.show()
+		var file = FileAccess.open("user://highscore.dat", FileAccess.READ)
+		if file:
+			high_score_label.text = str(file.get_32())
 		
 		instructions.show()
 		filter.show()
@@ -46,6 +52,7 @@ func _ready() -> void:
 	else:
 		$UI/GameUI/OpponentPanel.show()
 		$UI/GameUI/InfoPanel.size.x = 631
+		high_score_box.hide()
 		
 
 func _process(delta: float) -> void:
@@ -230,6 +237,16 @@ func _game_over_state(win_string: String):
 	update_game_over.emit(win_string)
 	if not Globals.is_singleplayer:
 		player_lost.emit()
+	else:
+		var save_file = FileAccess.open("user://highscore.dat", FileAccess.WRITE_READ)
+		if save_file:
+			var high_score = save_file.get_32()
+			if Globals.Score > int(high_score):
+				save_file.store_32(Globals.Score)
+		else:
+			save_file.store_32(Globals.Score)
+			
+		
 
 func _on_player_won(disconnected):
 	# Ternary operator

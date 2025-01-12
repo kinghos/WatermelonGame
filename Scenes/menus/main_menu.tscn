@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bv2gfrv8ohgv5"]
+[gd_scene load_steps=9 format=3 uid="uid://bv2gfrv8ohgv5"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_4ay45"]
 [ext_resource type="Theme" uid="uid://bkerc6l33jv1x" path="res://resources/fonts/ui_theme.tres" id="1_nkhic"]
 [ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://resources/fonts/FredokaOne-Regular.ttf" id="3_ofnea"]
+[ext_resource type="Texture2D" uid="uid://b2w1gft2gpj3o" path="res://assets/fruits/watermelon.png" id="4_th31m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvvl6"]
 
@@ -63,9 +64,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -452.0
-offset_top = -1577.0
+offset_top = -1272.0
 offset_right = 452.0
-offset_bottom = -585.0
+offset_bottom = -280.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 180
@@ -97,6 +98,22 @@ theme = SubResource("Theme_tov1h")
 theme_override_font_sizes/font_size = 86
 theme_override_styles/focus = SubResource("StyleBoxEmpty_q2fgb")
 text = "Quit"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -274.0
+offset_top = -693.0
+offset_right = 312.0
+offset_bottom = -107.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_th31m")
+expand_mode = 1
 
 [connection signal="pressed" from="Buttons/Singleplayer" to="." method="_on_singleplayer_pressed"]
 [connection signal="pressed" from="Buttons/Multiplayer" to="." method="_on_multiplayer_pressed"]

@@ -1,9 +1,57 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bkerc6l33jv1x"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bkerc6l33jv1x"]
 
 [ext_resource type="Texture2D" uid="uid://dowf1455wokcf" path="res://assets/ui/slider.png" id="1_c3hkh"]
 [ext_resource type="FontFile" uid="uid://d3iqktwlfrof4" path="res://resources/fonts/FredokaOne-Regular.ttf" id="1_lysoh"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfdhe"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 5
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cyw28"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahwr8"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgo27"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ug8qx"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq8h0"]
 bg_color = Color(0.235315, 0.164136, 0.0864248, 1)
@@ -39,7 +87,11 @@ shadow_size = 10
 
 [resource]
 default_font = ExtResource("1_lysoh")
+Button/styles/disabled = SubResource("StyleBoxFlat_cfdhe")
 Button/styles/focus = SubResource("StyleBoxEmpty_cyw28")
+Button/styles/hover = SubResource("StyleBoxFlat_ahwr8")
+Button/styles/normal = SubResource("StyleBoxFlat_cgo27")
+Button/styles/pressed = SubResource("StyleBoxFlat_ug8qx")
 HSlider/icons/grabber = ExtResource("1_c3hkh")
 HSlider/icons/grabber_highlight = ExtResource("1_c3hkh")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_jq8h0")
