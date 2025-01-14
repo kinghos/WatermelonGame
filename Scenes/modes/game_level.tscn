@@ -1,15 +1,15 @@
 [gd_scene load_steps=13 format=3 uid="uid://dsnydv4c3yn7"]
 
 [ext_resource type="Script" path="res://scenes/modes/game_level.gd" id="1_l035o"]
-[ext_resource type="PackedScene" uid="uid://bojrg6o8ov2if" path="res://Scenes/menus/game_ui.tscn" id="2_478an"]
+[ext_resource type="PackedScene" uid="uid://bojrg6o8ov2if" path="res://scenes/menus/game_ui.tscn" id="2_478an"]
 [ext_resource type="Texture2D" uid="uid://bg4husm17fda0" path="res://assets/ui/board.png" id="3_7obd2"]
 [ext_resource type="Theme" uid="uid://bkerc6l33jv1x" path="res://resources/fonts/ui_theme.tres" id="4_uqjgg"]
 [ext_resource type="Texture2D" uid="uid://di5gq3fdk2ajc" path="res://assets/ui/cloud.png" id="4_w5q8k"]
-[ext_resource type="PackedScene" uid="uid://c880ihyys2ofi" path="res://Scenes/menus/pause_menu.tscn" id="5_ulei8"]
+[ext_resource type="PackedScene" uid="uid://c880ihyys2ofi" path="res://scenes/menus/pause_menu.tscn" id="5_ulei8"]
 [ext_resource type="Texture2D" uid="uid://41cj000a5jrd" path="res://assets/ui/line.png" id="5_w7cjs"]
-[ext_resource type="PackedScene" uid="uid://b72wh76cgwxt3" path="res://Scenes/menus/instructions.tscn" id="6_4s4pd"]
-[ext_resource type="PackedScene" uid="uid://jtuem08mkimy" path="res://Scenes/menus/game_over.tscn" id="6_28vyu"]
-[ext_resource type="PackedScene" uid="uid://c5ee3huowglg1" path="res://Scenes/menus/options.tscn" id="7_m7b0l"]
+[ext_resource type="PackedScene" uid="uid://b72wh76cgwxt3" path="res://scenes/menus/instructions.tscn" id="6_4s4pd"]
+[ext_resource type="PackedScene" uid="uid://jtuem08mkimy" path="res://scenes/menus/game_over.tscn" id="6_28vyu"]
+[ext_resource type="PackedScene" uid="uid://c5ee3huowglg1" path="res://scenes/menus/options.tscn" id="7_m7b0l"]
 [ext_resource type="AudioStream" uid="uid://b5p887gecnl5k" path="res://assets/audio/merge.mp3" id="12_unoun"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_deo3p"]
@@ -112,7 +112,7 @@ one_shot = true
 
 [node name="MultiplayerTimer" type="Timer" parent="."]
 process_mode = 3
-wait_time = 600.0
+wait_time = 5.0
 
 [node name="Pop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_unoun")

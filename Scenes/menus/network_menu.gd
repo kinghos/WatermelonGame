@@ -54,7 +54,7 @@ func _peer_disconnected(id):
 	print("Player disconnected with ID ", id)
 	$Background/Buttons/StartGame.disabled = true
 	_update_status.rpc("Disconnected")
-	if started:
+	if started and not game_over:
 		player_won.emit(true)
 		game_over = true
 		peer.close()
@@ -108,9 +108,10 @@ func _start_game():
 func _on_start_game_pressed() -> void:
 	_start_game.rpc()
 	
-func _on_player_lost():
+func _on_player_lost(drew):
 	game_over = true
-	_player_wins.rpc()
+	if not drew:
+		_player_wins.rpc()
 	await get_tree().create_timer(3).timeout # 3 second wait
 	peer.close()
 	

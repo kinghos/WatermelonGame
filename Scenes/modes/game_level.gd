@@ -29,7 +29,7 @@ var end_area_fruits: Dictionary
 var game_over = false
 var connected = false
 
-signal player_lost
+signal player_lost(drew)
 signal update_game_over(won: bool)
 
 func _ready() -> void:
@@ -237,7 +237,7 @@ func _game_over_state(win_string: String):
 	$"UI/GameOver".visible = true
 	update_game_over.emit(win_string)
 	if not Globals.is_singleplayer:
-		player_lost.emit()
+		player_lost.emit(Globals.Opponent_score == Globals.Score)
 	else:
 		var save_file = FileAccess.open("user://highscore.dat", FileAccess.WRITE_READ)
 		if save_file:
@@ -251,7 +251,8 @@ func _game_over_state(win_string: String):
 
 func _on_player_won(disconnected):
 	# Ternary operator
-	_game_over_state("won" + " (Opponent disconnected)" if disconnected else "")
+	var message = " (Opponent disconnected)" if disconnected else ""
+	_game_over_state("won" + message)
 	
 func _on_multiplayer_timer_timeout() -> void:
 	if Globals.Score < Globals.Opponent_score:
